@@ -24,6 +24,10 @@
 #   GPUS [the job's GPUs, else 0]  GPU indices, comma-separated: 0,1 = GPUs 0 and 1. Generation runs one process per
 #                       GPU; training uses all of them (1, 2, 4 or 8). Under Slurm leave it unset: the job's GPUs.
 #   PAIRS [7000]        preference pairs to train on (the paper's 7000)
+#   BATCH [64]          pairs per training update (the paper's 64); EPOCHS [1] passes over the pairs (may be fractional).
+#                       Updates = PAIRS / BATCH x EPOCHS (7000 pairs: 109). A non-default value is part of the run's
+#                       name (cdpo_2000_bs16, cdpo_2000_ep3), so variants sit beside the paper-recipe run and share its
+#                       pairs: changing them costs only training and eval, not generation
 #   WORK [./work]       venv, model weights, COCO images and runs (~45 GB, plus ~0.2 GB per 1000 images)
 #   N_IMAGES [8000]     COCO train2014 images generation may use (at most 16000; raise it if 8000 give too few pairs)
 #   JUDGE_BUDGET [10]   most dollars the gpt-5.1 judge may spend per run (see chair_coco/judge_batch.py); a first eval
@@ -88,9 +92,14 @@ WORK=$(realpath -m "${WORK:-$REPO/work}")
 RUN=$WORK/runs/${LLM}_seed$SEED
 PY=$WORK/venv/bin/python
 PROFILE=$CC/flop_profiles/$MODEL_NAME.json
+BATCH=${BATCH:-64}; EPOCHS=${EPOCHS:-1}
+[[ $BATCH =~ ^[0-9]+$ ]] && (( BATCH >= 1 )) || { echo "BATCH must be a positive integer" >&2; exit 2; }
+[[ $EPOCHS =~ ^[0-9]*\.?[0-9]+$ ]] || { echo "EPOCHS must be a positive number" >&2; exit 2; }
 OUT=cdpo_$PAIRS
+(( BATCH != 64 )) && OUT+=_bs$BATCH
+[[ $EPOCHS != 1 && $EPOCHS != 1.0 ]] && OUT+=_ep$EPOCHS
 (( N_IMAGES <= 16000 )) || { echo "N_IMAGES is at most 16000 (chair_coco/data/train2014_images.tsv)" >&2; exit 2; }
-(( PAIRS >= 64 )) || { echo "PAIRS must be at least 64, one training batch" >&2; exit 2; }
+(( PAIRS >= BATCH )) || { echo "PAIRS must be at least BATCH ($BATCH), one training batch" >&2; exit 2; }
 
 export HF_HOME=$WORK/hf HF_HUB_CACHE=$WORK/hf/hub HF_HUB_OFFLINE=1
 export NLTK_DATA=$WORK/nltk_data YOLO_CONFIG_DIR=$WORK/tools/ultralytics_cfg YOLO_OFFLINE=1
@@ -268,13 +277,14 @@ stage_pairs() {
 
 stage_train() {
   if [[ -f $RUN/train/$OUT/checkpoint-final/adapter_model.safetensors ]]; then log "[train] $RUN/train/$OUT exists"; return; fi
-  (( 64 % NGPU == 0 )) || die "training needs 1, 2, 4 or 8 GPUs (the batch of 64 pairs must split evenly); GPUS=$GPUS"
+  (( BATCH % NGPU == 0 )) || die "the batch of $BATCH pairs must split evenly over $NGPU GPUs (GPUS=$GPUS)"
   common_args
   local launch=("$WORK/venv/bin/accelerate" launch --num_processes "$NGPU" --mixed_precision no)
   (( NGPU > 1 )) && launch+=(--multi_gpu)
-  log "[train] C-DPO on $NGPU GPU(s) -> $RUN/train/$OUT"
+  log "[train] C-DPO on $NGPU GPU(s), $PAIRS pairs, batch $BATCH, $EPOCHS epoch(s) -> $RUN/train/$OUT"
   CUDA_VISIBLE_DEVICES=$GPUS "${launch[@]}" "$CC/train_cdpo.py" "${COMMON[@]}" --flop-profile "$PROFILE" --seed "$SEED" \
-    --train-file "train_pairs_$PAIRS.jsonl" --out-name "$OUT" 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
+    --train-file "train_pairs_$PAIRS.jsonl" --out-name "$OUT" \
+    --total-batch-size "$BATCH" --epochs "$EPOCHS" 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
   [[ -f $RUN/train/$OUT/checkpoint-final/adapter_model.safetensors ]] || die "training failed: see $RUN/logs/train_$OUT.log"
 }
 

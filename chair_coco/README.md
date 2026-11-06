@@ -36,7 +36,8 @@ bash run_pipeline.sh qwen2_5_vl_3b 42 judge      # a single stage; every stage r
   Gemma 3 is gated: accept its license on Hugging Face and export `HF_TOKEN`.
 - **Seed:** sets generation sampling and training (data order, LoRA init). The image lists and the eval decoding are
   fixed, so seeds are compared on the same data. The paper reports three seeds (42, 43, 44).
-- **Settings** (environment variables): `GPUS`, `PAIRS` (7000), `WORK` (./work), `N_IMAGES` (8000, up to 16000),
+- **Settings** (environment variables): `GPUS`, `PAIRS` (7000), `BATCH` (64) and `EPOCHS` (1) (a non-default value is
+  added to the run's name, e.g. `cdpo_2000_bs16`, and reuses the generated pairs), `WORK` (./work), `N_IMAGES` (8000, up to 16000),
   `JUDGE_BUDGET` ($10 per run), `JUDGE_MODE` (`batch` / `live`), `JUDGE_IMAGE_SOURCE` (`url` / `base64`),
   `RUN_JUDGE`, `MATCHED`, `HEDGE_STRICT`, `COCO_TRAIN2014_DIR` / `COCO_VAL2014_DIR` /
   `COCO_ANN_DIR` (use a local COCO), `HF_TOKEN`; see the header of `run_pipeline.sh`.
