@@ -1,0 +1,30 @@
+# Exact versions of the environment the port was developed and run in (the sathwik box: Python 3.12, CUDA 12.8 wheels).
+# Installed by setup.sh into a fresh venv:  uv pip install -r chair_coco/requirements.txt
+# --- models, training, serving
+torch==2.10.0
+torchvision==0.25.0
+vllm==0.17.1
+transformers==5.5.0
+tokenizers==0.22.2
+safetensors==0.7.0
+peft==0.18.1
+accelerate==1.12.0
+huggingface-hub==1.9.0
+datasets==4.3.0
+numpy==2.3.5
+scipy==1.17.0
+pillow==12.1.0
+pyyaml==6.0.3
+tqdm==4.67.3
+openai==2.24.0
+# --- SENTINEL's tools: coreference, object extraction, detectors
+spacy==3.8.18
+en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl
+fastcoref==2.1.6
+nltk==3.9.2
+ultralytics==8.4.195
+ultralytics-thop==2.2.3
+supervision==0.31.3
+pydeprecate==0.13.0
+opencv-python-headless==4.13.0.92
+matplotlib==3.10.7

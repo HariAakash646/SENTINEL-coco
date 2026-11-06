@@ -1,0 +1,65 @@
+{
+ "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+ "a": 5549064575.999999,
+ "b": 294911.9999999979,
+ "h": 622329856.0,
+ "c": 5157375949.458538,
+ "e": 332070.01413548883,
+ "vision_fit": "c*n + e*n^2",
+ "max_pixels": 1003520,
+ "n_params": 3754622976,
+ "text_fit_max_rel_error": 4.889756140233991e-16,
+ "vision_points": [
+  {
+   "image_tokens": 391,
+   "flops": 2067303383040.001
+  },
+  {
+   "image_tokens": 345,
+   "flops": 1818818887680.0005
+  },
+  {
+   "image_tokens": 345,
+   "flops": 1818818887680.0005
+  },
+  {
+   "image_tokens": 345,
+   "flops": 1818818887680.0005
+  },
+  {
+   "image_tokens": 99,
+   "flops": 513705984000.0001
+  },
+  {
+   "image_tokens": 88,
+   "flops": 456561131520.0001
+  }
+ ],
+ "held_out_checks": [
+  {
+   "tokens": 548,
+   "image_tokens": 391,
+   "measured": 5537790785024.0,
+   "predicted": 5537788594053.335,
+   "rel_error": -3.956398408845933e-07
+  },
+  {
+   "tokens": 409,
+   "image_tokens": 252,
+   "measured": 3893893784960.0,
+   "predicted": 3894180010401.211,
+   "rel_error": 7.350622718998427e-05
+  },
+  {
+   "tokens": 700,
+   "image_tokens": 0,
+   "measured": 4464482982400.0,
+   "predicted": 4464482982399.998,
+   "rel_error": -4.3748066857901794e-16
+  }
+ ],
+ "max_abs_rel_error": 7.350622718998427e-05,
+ "method": "torch.utils.flop_counter.FlopCounterMode, eager attention, fp32, cpu",
+ "torch": "2.10.0+cu128",
+ "seconds": 43.5
+}

@@ -1,0 +1,3404 @@
+[
+ {
+  "image_id": 1993,
+  "file_name": "COCO_val2014_000000001993.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000001993.jpg",
+  "objects": [
+   "bed",
+   "chair",
+   "dining table"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 2006,
+  "file_name": "COCO_val2014_000000002006.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000002006.jpg",
+  "objects": [
+   "bus",
+   "person",
+   "tie",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 3501,
+  "file_name": "COCO_val2014_000000003501.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000003501.jpg",
+  "objects": [
+   "bowl",
+   "broccoli"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 3553,
+  "file_name": "COCO_val2014_000000003553.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000003553.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 4134,
+  "file_name": "COCO_val2014_000000004134.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000004134.jpg",
+  "objects": [
+   "chair",
+   "dining table",
+   "person",
+   "tie",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 6614,
+  "file_name": "COCO_val2014_000000006614.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000006614.jpg",
+  "objects": [
+   "apple",
+   "orange"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 6894,
+  "file_name": "COCO_val2014_000000006894.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000006894.jpg",
+  "objects": [
+   "elephant",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 8211,
+  "file_name": "COCO_val2014_000000008211.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000008211.jpg",
+  "objects": [
+   "bicycle",
+   "chair",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 10764,
+  "file_name": "COCO_val2014_000000010764.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000010764.jpg",
+  "objects": [
+   "baseball glove",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 13546,
+  "file_name": "COCO_val2014_000000013546.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000013546.jpg",
+  "objects": [
+   "bench",
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 17207,
+  "file_name": "COCO_val2014_000000017207.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000017207.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 18193,
+  "file_name": "COCO_val2014_000000018193.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000018193.jpg",
+  "objects": [
+   "chair",
+   "hot dog",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 21503,
+  "file_name": "COCO_val2014_000000021503.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000021503.jpg",
+  "objects": [
+   "keyboard",
+   "mouse",
+   "remote",
+   "sandwich"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 22705,
+  "file_name": "COCO_val2014_000000022705.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000022705.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "person",
+   "refrigerator",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 23937,
+  "file_name": "COCO_val2014_000000023937.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000023937.jpg",
+  "objects": [
+   "cow",
+   "sheep"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 24021,
+  "file_name": "COCO_val2014_000000024021.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000024021.jpg",
+  "objects": [
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 24567,
+  "file_name": "COCO_val2014_000000024567.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000024567.jpg",
+  "objects": [
+   "chair",
+   "hot dog",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 25057,
+  "file_name": "COCO_val2014_000000025057.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000025057.jpg",
+  "objects": [
+   "bottle",
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 27696,
+  "file_name": "COCO_val2014_000000027696.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000027696.jpg",
+  "objects": [
+   "fork",
+   "knife",
+   "person",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 29640,
+  "file_name": "COCO_val2014_000000029640.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000029640.jpg",
+  "objects": [
+   "broccoli",
+   "carrot",
+   "oven",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 33114,
+  "file_name": "COCO_val2014_000000033114.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000033114.jpg",
+  "objects": [
+   "airplane",
+   "parking meter"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 34257,
+  "file_name": "COCO_val2014_000000034257.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000034257.jpg",
+  "objects": [
+   "broccoli",
+   "carrot"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 39477,
+  "file_name": "COCO_val2014_000000039477.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000039477.jpg",
+  "objects": [
+   "book",
+   "couch",
+   "potted plant",
+   "tv",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 41633,
+  "file_name": "COCO_val2014_000000041633.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000041633.jpg",
+  "objects": [
+   "car",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 47112,
+  "file_name": "COCO_val2014_000000047112.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000047112.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "chair",
+   "dining table",
+   "knife",
+   "person",
+   "pizza",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 48564,
+  "file_name": "COCO_val2014_000000048564.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000048564.jpg",
+  "objects": [
+   "cell phone",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 49759,
+  "file_name": "COCO_val2014_000000049759.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000049759.jpg",
+  "objects": [
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 50149,
+  "file_name": "COCO_val2014_000000050149.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000050149.jpg",
+  "objects": [
+   "banana",
+   "bowl"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 50326,
+  "file_name": "COCO_val2014_000000050326.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000050326.jpg",
+  "objects": [
+   "chair",
+   "kite",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 58350,
+  "file_name": "COCO_val2014_000000058350.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000058350.jpg",
+  "objects": [
+   "couch",
+   "knife",
+   "person",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 58539,
+  "file_name": "COCO_val2014_000000058539.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000058539.jpg",
+  "objects": [
+   "car",
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 59635,
+  "file_name": "COCO_val2014_000000059635.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000059635.jpg",
+  "objects": [
+   "bicycle",
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 60102,
+  "file_name": "COCO_val2014_000000060102.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000060102.jpg",
+  "objects": [
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 61333,
+  "file_name": "COCO_val2014_000000061333.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000061333.jpg",
+  "objects": [
+   "bed",
+   "book",
+   "cat"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 61471,
+  "file_name": "COCO_val2014_000000061471.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000061471.jpg",
+  "objects": [
+   "bottle",
+   "dog",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 65455,
+  "file_name": "COCO_val2014_000000065455.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000065455.jpg",
+  "objects": [
+   "giraffe",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 69138,
+  "file_name": "COCO_val2014_000000069138.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000069138.jpg",
+  "objects": [
+   "traffic light",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 69224,
+  "file_name": "COCO_val2014_000000069224.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000069224.jpg",
+  "objects": [
+   "bottle",
+   "chair",
+   "dining table",
+   "donut",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 72852,
+  "file_name": "COCO_val2014_000000072852.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000072852.jpg",
+  "objects": [
+   "bicycle",
+   "handbag",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 74092,
+  "file_name": "COCO_val2014_000000074092.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000074092.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 76417,
+  "file_name": "COCO_val2014_000000076417.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000076417.jpg",
+  "objects": [
+   "car",
+   "dog",
+   "traffic light",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 78748,
+  "file_name": "COCO_val2014_000000078748.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000078748.jpg",
+  "objects": [
+   "backpack",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 78823,
+  "file_name": "COCO_val2014_000000078823.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000078823.jpg",
+  "objects": [
+   "car",
+   "dog",
+   "potted plant"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 78915,
+  "file_name": "COCO_val2014_000000078915.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000078915.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 79969,
+  "file_name": "COCO_val2014_000000079969.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000079969.jpg",
+  "objects": [
+   "chair",
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 80932,
+  "file_name": "COCO_val2014_000000080932.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000080932.jpg",
+  "objects": [
+   "chair",
+   "cup",
+   "dining table",
+   "fork",
+   "person",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 81594,
+  "file_name": "COCO_val2014_000000081594.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000081594.jpg",
+  "objects": [
+   "handbag",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 81988,
+  "file_name": "COCO_val2014_000000081988.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000081988.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 84492,
+  "file_name": "COCO_val2014_000000084492.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000084492.jpg",
+  "objects": [
+   "bench",
+   "car",
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 89078,
+  "file_name": "COCO_val2014_000000089078.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000089078.jpg",
+  "objects": [
+   "person",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 90956,
+  "file_name": "COCO_val2014_000000090956.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000090956.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 94185,
+  "file_name": "COCO_val2014_000000094185.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000094185.jpg",
+  "objects": [
+   "person",
+   "teddy bear"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 94751,
+  "file_name": "COCO_val2014_000000094751.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000094751.jpg",
+  "objects": [
+   "bench",
+   "car",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 98716,
+  "file_name": "COCO_val2014_000000098716.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000098716.jpg",
+  "objects": [
+   "bench",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 99114,
+  "file_name": "COCO_val2014_000000099114.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000099114.jpg",
+  "objects": [
+   "bicycle",
+   "handbag",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 100238,
+  "file_name": "COCO_val2014_000000100238.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000100238.jpg",
+  "objects": [
+   "bottle",
+   "frisbee",
+   "handbag",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 100582,
+  "file_name": "COCO_val2014_000000100582.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000100582.jpg",
+  "objects": [
+   "dining table",
+   "fork",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 100723,
+  "file_name": "COCO_val2014_000000100723.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000100723.jpg",
+  "objects": [
+   "backpack",
+   "handbag",
+   "person",
+   "stop sign"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 103585,
+  "file_name": "COCO_val2014_000000103585.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000103585.jpg",
+  "objects": [
+   "sink",
+   "toilet",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 106912,
+  "file_name": "COCO_val2014_000000106912.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000106912.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 107087,
+  "file_name": "COCO_val2014_000000107087.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000107087.jpg",
+  "objects": [
+   "car",
+   "cat",
+   "chair"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 110884,
+  "file_name": "COCO_val2014_000000110884.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000110884.jpg",
+  "objects": [
+   "bowl",
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 111951,
+  "file_name": "COCO_val2014_000000111951.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000111951.jpg",
+  "objects": [
+   "sink",
+   "toilet",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 117492,
+  "file_name": "COCO_val2014_000000117492.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000117492.jpg",
+  "objects": [
+   "chair",
+   "person",
+   "teddy bear",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 117744,
+  "file_name": "COCO_val2014_000000117744.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000117744.jpg",
+  "objects": [
+   "person",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 117908,
+  "file_name": "COCO_val2014_000000117908.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000117908.jpg",
+  "objects": [
+   "bottle",
+   "cat",
+   "person",
+   "refrigerator"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 118367,
+  "file_name": "COCO_val2014_000000118367.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000118367.jpg",
+  "objects": [
+   "carrot",
+   "hot dog",
+   "person",
+   "sandwich"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 118515,
+  "file_name": "COCO_val2014_000000118515.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000118515.jpg",
+  "objects": [
+   "bench",
+   "cat"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 121417,
+  "file_name": "COCO_val2014_000000121417.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000121417.jpg",
+  "objects": [
+   "bench",
+   "cell phone",
+   "handbag",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 124442,
+  "file_name": "COCO_val2014_000000124442.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000124442.jpg",
+  "objects": [
+   "kite",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 134886,
+  "file_name": "COCO_val2014_000000134886.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000134886.jpg",
+  "objects": [
+   "airplane",
+   "car",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 136715,
+  "file_name": "COCO_val2014_000000136715.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000136715.jpg",
+  "objects": [
+   "car",
+   "motorcycle",
+   "person",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 145620,
+  "file_name": "COCO_val2014_000000145620.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000145620.jpg",
+  "objects": [
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 146363,
+  "file_name": "COCO_val2014_000000146363.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000146363.jpg",
+  "objects": [
+   "chair",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 146457,
+  "file_name": "COCO_val2014_000000146457.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000146457.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "chair",
+   "dining table",
+   "person",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 148508,
+  "file_name": "COCO_val2014_000000148508.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000148508.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 148620,
+  "file_name": "COCO_val2014_000000148620.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000148620.jpg",
+  "objects": [
+   "keyboard",
+   "laptop",
+   "mouse",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 153510,
+  "file_name": "COCO_val2014_000000153510.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000153510.jpg",
+  "objects": [
+   "broccoli",
+   "carrot"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 157418,
+  "file_name": "COCO_val2014_000000157418.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000157418.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "cup",
+   "dining table",
+   "sandwich"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 157807,
+  "file_name": "COCO_val2014_000000157807.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000157807.jpg",
+  "objects": [
+   "cat",
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 159791,
+  "file_name": "COCO_val2014_000000159791.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000159791.jpg",
+  "objects": [
+   "bird",
+   "bowl",
+   "chair",
+   "microwave",
+   "oven",
+   "person",
+   "refrigerator"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 162415,
+  "file_name": "COCO_val2014_000000162415.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000162415.jpg",
+  "objects": [
+   "baseball glove",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 163314,
+  "file_name": "COCO_val2014_000000163314.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000163314.jpg",
+  "objects": [
+   "backpack",
+   "handbag",
+   "person",
+   "suitcase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 164115,
+  "file_name": "COCO_val2014_000000164115.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000164115.jpg",
+  "objects": [
+   "bicycle",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 166521,
+  "file_name": "COCO_val2014_000000166521.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000166521.jpg",
+  "objects": [
+   "book",
+   "couch",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 167898,
+  "file_name": "COCO_val2014_000000167898.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000167898.jpg",
+  "objects": [
+   "bottle",
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 170099,
+  "file_name": "COCO_val2014_000000170099.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000170099.jpg",
+  "objects": [
+   "couch",
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 172595,
+  "file_name": "COCO_val2014_000000172595.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000172595.jpg",
+  "objects": [
+   "backpack",
+   "book",
+   "bottle",
+   "cell phone",
+   "chair",
+   "handbag",
+   "keyboard",
+   "laptop",
+   "mouse",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 175438,
+  "file_name": "COCO_val2014_000000175438.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000175438.jpg",
+  "objects": [
+   "car",
+   "clock",
+   "potted plant",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 177065,
+  "file_name": "COCO_val2014_000000177065.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000177065.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 177861,
+  "file_name": "COCO_val2014_000000177861.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000177861.jpg",
+  "objects": [
+   "backpack",
+   "bicycle",
+   "car",
+   "chair",
+   "dining table",
+   "handbag",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 180296,
+  "file_name": "COCO_val2014_000000180296.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000180296.jpg",
+  "objects": [
+   "backpack",
+   "chair",
+   "suitcase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 181753,
+  "file_name": "COCO_val2014_000000181753.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000181753.jpg",
+  "objects": [
+   "book",
+   "bowl",
+   "chair",
+   "couch",
+   "cup",
+   "dining table",
+   "horse",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 183049,
+  "file_name": "COCO_val2014_000000183049.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000183049.jpg",
+  "objects": [
+   "book",
+   "clock"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 184384,
+  "file_name": "COCO_val2014_000000184384.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000184384.jpg",
+  "objects": [
+   "cake",
+   "cup",
+   "dining table",
+   "orange",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 186624,
+  "file_name": "COCO_val2014_000000186624.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000186624.jpg",
+  "objects": [
+   "backpack",
+   "handbag",
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 187144,
+  "file_name": "COCO_val2014_000000187144.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000187144.jpg",
+  "objects": [
+   "backpack",
+   "bus",
+   "handbag",
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 187243,
+  "file_name": "COCO_val2014_000000187243.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000187243.jpg",
+  "objects": [
+   "person",
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 187585,
+  "file_name": "COCO_val2014_000000187585.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000187585.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 190923,
+  "file_name": "COCO_val2014_000000190923.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000190923.jpg",
+  "objects": [
+   "handbag",
+   "person",
+   "traffic light",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 193181,
+  "file_name": "COCO_val2014_000000193181.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000193181.jpg",
+  "objects": [
+   "baseball bat",
+   "baseball glove",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 195842,
+  "file_name": "COCO_val2014_000000195842.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000195842.jpg",
+  "objects": [
+   "bowl",
+   "chair",
+   "clock",
+   "couch",
+   "person",
+   "remote",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 197004,
+  "file_name": "COCO_val2014_000000197004.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000197004.jpg",
+  "objects": [
+   "keyboard",
+   "sandwich"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 205324,
+  "file_name": "COCO_val2014_000000205324.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000205324.jpg",
+  "objects": [
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 206025,
+  "file_name": "COCO_val2014_000000206025.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000206025.jpg",
+  "objects": [
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 206411,
+  "file_name": "COCO_val2014_000000206411.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000206411.jpg",
+  "objects": [
+   "person",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 206838,
+  "file_name": "COCO_val2014_000000206838.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000206838.jpg",
+  "objects": [
+   "horse",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 212453,
+  "file_name": "COCO_val2014_000000212453.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000212453.jpg",
+  "objects": [
+   "person",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 216516,
+  "file_name": "COCO_val2014_000000216516.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000216516.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 217400,
+  "file_name": "COCO_val2014_000000217400.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000217400.jpg",
+  "objects": [
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 225184,
+  "file_name": "COCO_val2014_000000225184.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000225184.jpg",
+  "objects": [
+   "dog",
+   "sheep"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 225405,
+  "file_name": "COCO_val2014_000000225405.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000225405.jpg",
+  "objects": [
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 226802,
+  "file_name": "COCO_val2014_000000226802.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000226802.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 229997,
+  "file_name": "COCO_val2014_000000229997.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000229997.jpg",
+  "objects": [
+   "bear",
+   "bird"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 232684,
+  "file_name": "COCO_val2014_000000232684.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000232684.jpg",
+  "objects": [
+   "laptop",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 233033,
+  "file_name": "COCO_val2014_000000233033.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000233033.jpg",
+  "objects": [
+   "chair",
+   "dining table",
+   "potted plant",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 233370,
+  "file_name": "COCO_val2014_000000233370.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000233370.jpg",
+  "objects": [
+   "person",
+   "suitcase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 235836,
+  "file_name": "COCO_val2014_000000235836.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000235836.jpg",
+  "objects": [
+   "chair",
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 237984,
+  "file_name": "COCO_val2014_000000237984.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000237984.jpg",
+  "objects": [
+   "bench",
+   "chair"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 241668,
+  "file_name": "COCO_val2014_000000241668.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000241668.jpg",
+  "objects": [
+   "cake",
+   "chair",
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 242946,
+  "file_name": "COCO_val2014_000000242946.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000242946.jpg",
+  "objects": [
+   "bowl",
+   "carrot",
+   "chair",
+   "cup",
+   "dining table",
+   "person",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 244496,
+  "file_name": "COCO_val2014_000000244496.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000244496.jpg",
+  "objects": [
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 245513,
+  "file_name": "COCO_val2014_000000245513.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000245513.jpg",
+  "objects": [
+   "bird",
+   "giraffe",
+   "stop sign"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 246883,
+  "file_name": "COCO_val2014_000000246883.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000246883.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 246968,
+  "file_name": "COCO_val2014_000000246968.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000246968.jpg",
+  "objects": [
+   "banana",
+   "bottle",
+   "chair",
+   "cup",
+   "microwave",
+   "oven",
+   "person",
+   "potted plant",
+   "remote",
+   "sink",
+   "spoon",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 248111,
+  "file_name": "COCO_val2014_000000248111.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000248111.jpg",
+  "objects": [
+   "bottle",
+   "cup",
+   "handbag",
+   "oven",
+   "refrigerator",
+   "sink"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 249643,
+  "file_name": "COCO_val2014_000000249643.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000249643.jpg",
+  "objects": [
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 251824,
+  "file_name": "COCO_val2014_000000251824.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000251824.jpg",
+  "objects": [
+   "book",
+   "person",
+   "scissors"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 255747,
+  "file_name": "COCO_val2014_000000255747.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000255747.jpg",
+  "objects": [
+   "dining table",
+   "sandwich"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 256775,
+  "file_name": "COCO_val2014_000000256775.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000256775.jpg",
+  "objects": [
+   "kite",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 261732,
+  "file_name": "COCO_val2014_000000261732.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000261732.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 262487,
+  "file_name": "COCO_val2014_000000262487.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000262487.jpg",
+  "objects": [
+   "baseball bat",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 267300,
+  "file_name": "COCO_val2014_000000267300.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000267300.jpg",
+  "objects": [
+   "bed",
+   "dog",
+   "potted plant"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 267537,
+  "file_name": "COCO_val2014_000000267537.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000267537.jpg",
+  "objects": [
+   "bench",
+   "person",
+   "tie",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 268000,
+  "file_name": "COCO_val2014_000000268000.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000268000.jpg",
+  "objects": [
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 268831,
+  "file_name": "COCO_val2014_000000268831.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000268831.jpg",
+  "objects": [
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 269314,
+  "file_name": "COCO_val2014_000000269314.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000269314.jpg",
+  "objects": [
+   "banana",
+   "cat"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 273760,
+  "file_name": "COCO_val2014_000000273760.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000273760.jpg",
+  "objects": [
+   "person",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 280930,
+  "file_name": "COCO_val2014_000000280930.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000280930.jpg",
+  "objects": [
+   "bottle",
+   "oven",
+   "person",
+   "refrigerator"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 286553,
+  "file_name": "COCO_val2014_000000286553.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000286553.jpg",
+  "objects": [
+   "bottle",
+   "chair",
+   "cup",
+   "dining table",
+   "fork",
+   "knife",
+   "person",
+   "pizza",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 287874,
+  "file_name": "COCO_val2014_000000287874.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000287874.jpg",
+  "objects": [
+   "bench",
+   "handbag",
+   "person",
+   "suitcase",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 288685,
+  "file_name": "COCO_val2014_000000288685.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000288685.jpg",
+  "objects": [
+   "bench",
+   "dog",
+   "handbag",
+   "person",
+   "sheep"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 289343,
+  "file_name": "COCO_val2014_000000289343.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000289343.jpg",
+  "objects": [
+   "bench",
+   "bicycle",
+   "dog",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 289393,
+  "file_name": "COCO_val2014_000000289393.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000289393.jpg",
+  "objects": [
+   "bird",
+   "cow",
+   "giraffe",
+   "potted plant"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 289938,
+  "file_name": "COCO_val2014_000000289938.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000289938.jpg",
+  "objects": [
+   "bottle",
+   "car",
+   "handbag",
+   "hot dog",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 293044,
+  "file_name": "COCO_val2014_000000293044.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000293044.jpg",
+  "objects": [
+   "carrot",
+   "dining table",
+   "sandwich",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 293245,
+  "file_name": "COCO_val2014_000000293245.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000293245.jpg",
+  "objects": [
+   "motorcycle",
+   "potted plant"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 297427,
+  "file_name": "COCO_val2014_000000297427.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000297427.jpg",
+  "objects": [
+   "donut",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 301376,
+  "file_name": "COCO_val2014_000000301376.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000301376.jpg",
+  "objects": [
+   "bicycle",
+   "car",
+   "handbag",
+   "parking meter",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 302452,
+  "file_name": "COCO_val2014_000000302452.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000302452.jpg",
+  "objects": [
+   "bottle",
+   "cell phone",
+   "giraffe",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 304180,
+  "file_name": "COCO_val2014_000000304180.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000304180.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 307074,
+  "file_name": "COCO_val2014_000000307074.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000307074.jpg",
+  "objects": [
+   "car",
+   "stop sign",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 308466,
+  "file_name": "COCO_val2014_000000308466.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000308466.jpg",
+  "objects": [
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 308799,
+  "file_name": "COCO_val2014_000000308799.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000308799.jpg",
+  "objects": [
+   "bottle",
+   "cup",
+   "oven",
+   "sink"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 309467,
+  "file_name": "COCO_val2014_000000309467.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000309467.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 309938,
+  "file_name": "COCO_val2014_000000309938.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000309938.jpg",
+  "objects": [
+   "book",
+   "dog"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 310980,
+  "file_name": "COCO_val2014_000000310980.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000310980.jpg",
+  "objects": [
+   "keyboard",
+   "laptop",
+   "teddy bear"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 311295,
+  "file_name": "COCO_val2014_000000311295.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000311295.jpg",
+  "objects": [
+   "giraffe",
+   "zebra"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 312406,
+  "file_name": "COCO_val2014_000000312406.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000312406.jpg",
+  "objects": [
+   "banana",
+   "bowl"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 314709,
+  "file_name": "COCO_val2014_000000314709.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000314709.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 319617,
+  "file_name": "COCO_val2014_000000319617.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000319617.jpg",
+  "objects": [
+   "cup",
+   "dining table",
+   "hot dog"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 321214,
+  "file_name": "COCO_val2014_000000321214.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000321214.jpg",
+  "objects": [
+   "cake",
+   "chair",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 322895,
+  "file_name": "COCO_val2014_000000322895.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000322895.jpg",
+  "objects": [
+   "bowl",
+   "chair",
+   "couch",
+   "tv",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 323355,
+  "file_name": "COCO_val2014_000000323355.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000323355.jpg",
+  "objects": [
+   "person",
+   "pizza"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 326248,
+  "file_name": "COCO_val2014_000000326248.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000326248.jpg",
+  "objects": [
+   "chair",
+   "person",
+   "tennis racket",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 327306,
+  "file_name": "COCO_val2014_000000327306.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000327306.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 327601,
+  "file_name": "COCO_val2014_000000327601.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000327601.jpg",
+  "objects": [
+   "chair",
+   "person",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 327605,
+  "file_name": "COCO_val2014_000000327605.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000327605.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 327780,
+  "file_name": "COCO_val2014_000000327780.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000327780.jpg",
+  "objects": [
+   "cake",
+   "fork"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 329080,
+  "file_name": "COCO_val2014_000000329080.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000329080.jpg",
+  "objects": [
+   "bed",
+   "suitcase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 334483,
+  "file_name": "COCO_val2014_000000334483.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000334483.jpg",
+  "objects": [
+   "cake",
+   "fork",
+   "handbag",
+   "knife",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 334521,
+  "file_name": "COCO_val2014_000000334521.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000334521.jpg",
+  "objects": [
+   "bird",
+   "giraffe",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 334767,
+  "file_name": "COCO_val2014_000000334767.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000334767.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 336587,
+  "file_name": "COCO_val2014_000000336587.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000336587.jpg",
+  "objects": [
+   "stop sign",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 341196,
+  "file_name": "COCO_val2014_000000341196.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000341196.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 341681,
+  "file_name": "COCO_val2014_000000341681.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000341681.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 342971,
+  "file_name": "COCO_val2014_000000342971.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000342971.jpg",
+  "objects": [
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 344268,
+  "file_name": "COCO_val2014_000000344268.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000344268.jpg",
+  "objects": [
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 344888,
+  "file_name": "COCO_val2014_000000344888.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000344888.jpg",
+  "objects": [
+   "car",
+   "horse",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 346638,
+  "file_name": "COCO_val2014_000000346638.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000346638.jpg",
+  "objects": [
+   "bottle",
+   "keyboard",
+   "mouse",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 347254,
+  "file_name": "COCO_val2014_000000347254.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000347254.jpg",
+  "objects": [
+   "chair",
+   "cup",
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 350023,
+  "file_name": "COCO_val2014_000000350023.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000350023.jpg",
+  "objects": [
+   "bicycle",
+   "bus",
+   "car",
+   "motorcycle",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 355325,
+  "file_name": "COCO_val2014_000000355325.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000355325.jpg",
+  "objects": [
+   "bowl",
+   "cup",
+   "dining table",
+   "person",
+   "pizza",
+   "spoon",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 355817,
+  "file_name": "COCO_val2014_000000355817.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000355817.jpg",
+  "objects": [
+   "bus",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 357941,
+  "file_name": "COCO_val2014_000000357941.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000357941.jpg",
+  "objects": [
+   "cat",
+   "cell phone",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 361551,
+  "file_name": "COCO_val2014_000000361551.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000361551.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "suitcase",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 362682,
+  "file_name": "COCO_val2014_000000362682.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000362682.jpg",
+  "objects": [
+   "bus",
+   "person",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 363207,
+  "file_name": "COCO_val2014_000000363207.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000363207.jpg",
+  "objects": [
+   "bowl",
+   "cake",
+   "dining table",
+   "person",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 365655,
+  "file_name": "COCO_val2014_000000365655.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000365655.jpg",
+  "objects": [
+   "bus",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 368212,
+  "file_name": "COCO_val2014_000000368212.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000368212.jpg",
+  "objects": [
+   "person",
+   "toilet",
+   "toothbrush"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 370208,
+  "file_name": "COCO_val2014_000000370208.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000370208.jpg",
+  "objects": [
+   "bicycle",
+   "parking meter",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 373382,
+  "file_name": "COCO_val2014_000000373382.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000373382.jpg",
+  "objects": [
+   "handbag",
+   "person",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 374052,
+  "file_name": "COCO_val2014_000000374052.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000374052.jpg",
+  "objects": [
+   "bench",
+   "bird",
+   "cup",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 375469,
+  "file_name": "COCO_val2014_000000375469.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000375469.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 375493,
+  "file_name": "COCO_val2014_000000375493.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000375493.jpg",
+  "objects": [
+   "bottle",
+   "cat",
+   "fire hydrant",
+   "person",
+   "stop sign"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 376322,
+  "file_name": "COCO_val2014_000000376322.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000376322.jpg",
+  "objects": [
+   "bottle",
+   "cake",
+   "cell phone",
+   "cup",
+   "dining table",
+   "fork",
+   "knife",
+   "person",
+   "spoon",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 378454,
+  "file_name": "COCO_val2014_000000378454.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000378454.jpg",
+  "objects": [
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 378873,
+  "file_name": "COCO_val2014_000000378873.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000378873.jpg",
+  "objects": [
+   "bowl",
+   "carrot",
+   "dining table",
+   "handbag",
+   "orange",
+   "person",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 379476,
+  "file_name": "COCO_val2014_000000379476.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000379476.jpg",
+  "objects": [
+   "chair",
+   "dining table",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 384661,
+  "file_name": "COCO_val2014_000000384661.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000384661.jpg",
+  "objects": [
+   "bottle",
+   "clock",
+   "oven",
+   "refrigerator",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 384949,
+  "file_name": "COCO_val2014_000000384949.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000384949.jpg",
+  "objects": [
+   "bird",
+   "boat",
+   "clock"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 385190,
+  "file_name": "COCO_val2014_000000385190.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000385190.jpg",
+  "objects": [
+   "bottle",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 388846,
+  "file_name": "COCO_val2014_000000388846.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000388846.jpg",
+  "objects": [
+   "backpack",
+   "chair",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 389812,
+  "file_name": "COCO_val2014_000000389812.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000389812.jpg",
+  "objects": [
+   "banana",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 395180,
+  "file_name": "COCO_val2014_000000395180.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000395180.jpg",
+  "objects": [
+   "bicycle",
+   "boat",
+   "cell phone",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 395701,
+  "file_name": "COCO_val2014_000000395701.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000395701.jpg",
+  "objects": [
+   "book",
+   "bottle",
+   "chair",
+   "couch",
+   "potted plant",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 395903,
+  "file_name": "COCO_val2014_000000395903.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000395903.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 396863,
+  "file_name": "COCO_val2014_000000396863.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000396863.jpg",
+  "objects": [
+   "horse",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 398742,
+  "file_name": "COCO_val2014_000000398742.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000398742.jpg",
+  "objects": [
+   "car",
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 400367,
+  "file_name": "COCO_val2014_000000400367.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000400367.jpg",
+  "objects": [
+   "car",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 407298,
+  "file_name": "COCO_val2014_000000407298.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000407298.jpg",
+  "objects": [
+   "baseball glove",
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 407960,
+  "file_name": "COCO_val2014_000000407960.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000407960.jpg",
+  "objects": [
+   "bowl",
+   "cat",
+   "oven"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 409211,
+  "file_name": "COCO_val2014_000000409211.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000409211.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 410510,
+  "file_name": "COCO_val2014_000000410510.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000410510.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 411774,
+  "file_name": "COCO_val2014_000000411774.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000411774.jpg",
+  "objects": [
+   "person",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 413395,
+  "file_name": "COCO_val2014_000000413395.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000413395.jpg",
+  "objects": [
+   "cat",
+   "couch",
+   "person",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 424642,
+  "file_name": "COCO_val2014_000000424642.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000424642.jpg",
+  "objects": [
+   "bottle",
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 426329,
+  "file_name": "COCO_val2014_000000426329.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000426329.jpg",
+  "objects": [
+   "cake",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 435880,
+  "file_name": "COCO_val2014_000000435880.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000435880.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "couch",
+   "cup",
+   "laptop",
+   "refrigerator"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 436883,
+  "file_name": "COCO_val2014_000000436883.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000436883.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "person",
+   "suitcase",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 437239,
+  "file_name": "COCO_val2014_000000437239.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000437239.jpg",
+  "objects": [
+   "backpack",
+   "bench",
+   "car",
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 438955,
+  "file_name": "COCO_val2014_000000438955.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000438955.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 440617,
+  "file_name": "COCO_val2014_000000440617.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000440617.jpg",
+  "objects": [
+   "traffic light",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 441442,
+  "file_name": "COCO_val2014_000000441442.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000441442.jpg",
+  "objects": [
+   "chair",
+   "horse",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 442323,
+  "file_name": "COCO_val2014_000000442323.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000442323.jpg",
+  "objects": [
+   "bed",
+   "chair",
+   "remote",
+   "suitcase",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 446117,
+  "file_name": "COCO_val2014_000000446117.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000446117.jpg",
+  "objects": [
+   "bench",
+   "orange"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 447465,
+  "file_name": "COCO_val2014_000000447465.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000447465.jpg",
+  "objects": [
+   "person",
+   "skis",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 447611,
+  "file_name": "COCO_val2014_000000447611.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000447611.jpg",
+  "objects": [
+   "knife",
+   "laptop",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 450559,
+  "file_name": "COCO_val2014_000000450559.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000450559.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 453634,
+  "file_name": "COCO_val2014_000000453634.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000453634.jpg",
+  "objects": [
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 454661,
+  "file_name": "COCO_val2014_000000454661.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000454661.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 458325,
+  "file_name": "COCO_val2014_000000458325.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000458325.jpg",
+  "objects": [
+   "car",
+   "person",
+   "skateboard",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 460229,
+  "file_name": "COCO_val2014_000000460229.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000460229.jpg",
+  "objects": [
+   "stop sign",
+   "traffic light",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 460347,
+  "file_name": "COCO_val2014_000000460347.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000460347.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 462614,
+  "file_name": "COCO_val2014_000000462614.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000462614.jpg",
+  "objects": [
+   "chair",
+   "potted plant",
+   "sink",
+   "toilet"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 463542,
+  "file_name": "COCO_val2014_000000463542.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000463542.jpg",
+  "objects": [
+   "person",
+   "skis",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 463849,
+  "file_name": "COCO_val2014_000000463849.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000463849.jpg",
+  "objects": [
+   "boat",
+   "car",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 464144,
+  "file_name": "COCO_val2014_000000464144.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000464144.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 465430,
+  "file_name": "COCO_val2014_000000465430.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000465430.jpg",
+  "objects": [
+   "sandwich",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 466256,
+  "file_name": "COCO_val2014_000000466256.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000466256.jpg",
+  "objects": [
+   "carrot",
+   "dining table",
+   "fork"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 466602,
+  "file_name": "COCO_val2014_000000466602.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000466602.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 467848,
+  "file_name": "COCO_val2014_000000467848.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000467848.jpg",
+  "objects": [
+   "person",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 468332,
+  "file_name": "COCO_val2014_000000468332.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000468332.jpg",
+  "objects": [
+   "bench",
+   "cake",
+   "car",
+   "clock",
+   "dining table",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 468505,
+  "file_name": "COCO_val2014_000000468505.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000468505.jpg",
+  "objects": [
+   "bicycle",
+   "bottle",
+   "couch",
+   "cup",
+   "dining table",
+   "hot dog",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 471869,
+  "file_name": "COCO_val2014_000000471869.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000471869.jpg",
+  "objects": [
+   "couch",
+   "teddy bear",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 474028,
+  "file_name": "COCO_val2014_000000474028.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000474028.jpg",
+  "objects": [
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 474039,
+  "file_name": "COCO_val2014_000000474039.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000474039.jpg",
+  "objects": [
+   "person",
+   "teddy bear"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 475064,
+  "file_name": "COCO_val2014_000000475064.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000475064.jpg",
+  "objects": [
+   "donut",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 476514,
+  "file_name": "COCO_val2014_000000476514.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000476514.jpg",
+  "objects": [
+   "handbag",
+   "person",
+   "tie",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 477805,
+  "file_name": "COCO_val2014_000000477805.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000477805.jpg",
+  "objects": [
+   "laptop",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 479126,
+  "file_name": "COCO_val2014_000000479126.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000479126.jpg",
+  "objects": [
+   "chair",
+   "laptop",
+   "person",
+   "wine glass"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 479953,
+  "file_name": "COCO_val2014_000000479953.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000479953.jpg",
+  "objects": [
+   "person",
+   "sports ball"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 484404,
+  "file_name": "COCO_val2014_000000484404.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000484404.jpg",
+  "objects": [
+   "bus",
+   "chair",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 490515,
+  "file_name": "COCO_val2014_000000490515.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000490515.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 492077,
+  "file_name": "COCO_val2014_000000492077.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000492077.jpg",
+  "objects": [
+   "bicycle",
+   "bus",
+   "car",
+   "person",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 492362,
+  "file_name": "COCO_val2014_000000492362.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000492362.jpg",
+  "objects": [
+   "backpack",
+   "bowl",
+   "handbag",
+   "hot dog",
+   "person",
+   "skateboard",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 493334,
+  "file_name": "COCO_val2014_000000493334.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000493334.jpg",
+  "objects": [
+   "cake",
+   "cell phone"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 494913,
+  "file_name": "COCO_val2014_000000494913.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000494913.jpg",
+  "objects": [
+   "book",
+   "cat",
+   "chair",
+   "clock",
+   "couch",
+   "cup",
+   "dining table",
+   "fork",
+   "handbag",
+   "person",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 496954,
+  "file_name": "COCO_val2014_000000496954.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000496954.jpg",
+  "objects": [
+   "bottle",
+   "bowl",
+   "cake",
+   "fork",
+   "orange"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 498286,
+  "file_name": "COCO_val2014_000000498286.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000498286.jpg",
+  "objects": [
+   "car",
+   "dog",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 498919,
+  "file_name": "COCO_val2014_000000498919.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000498919.jpg",
+  "objects": [
+   "apple",
+   "orange"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 500257,
+  "file_name": "COCO_val2014_000000500257.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000500257.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "suitcase",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 500270,
+  "file_name": "COCO_val2014_000000500270.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000500270.jpg",
+  "objects": [
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 500464,
+  "file_name": "COCO_val2014_000000500464.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000500464.jpg",
+  "objects": [
+   "bottle",
+   "hair drier",
+   "sink",
+   "toothbrush"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 502336,
+  "file_name": "COCO_val2014_000000502336.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000502336.jpg",
+  "objects": [
+   "handbag",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 507667,
+  "file_name": "COCO_val2014_000000507667.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000507667.jpg",
+  "objects": [
+   "backpack",
+   "car",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 508917,
+  "file_name": "COCO_val2014_000000508917.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000508917.jpg",
+  "objects": [
+   "bench",
+   "clock",
+   "handbag",
+   "person",
+   "train"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 509403,
+  "file_name": "COCO_val2014_000000509403.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000509403.jpg",
+  "objects": [
+   "dog",
+   "frisbee",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 512929,
+  "file_name": "COCO_val2014_000000512929.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000512929.jpg",
+  "objects": [
+   "bowl",
+   "oven",
+   "person",
+   "spoon"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 513688,
+  "file_name": "COCO_val2014_000000513688.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000513688.jpg",
+  "objects": [
+   "chair",
+   "dining table",
+   "laptop",
+   "mouse"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 518326,
+  "file_name": "COCO_val2014_000000518326.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000518326.jpg",
+  "objects": [
+   "bed",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 521509,
+  "file_name": "COCO_val2014_000000521509.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000521509.jpg",
+  "objects": [
+   "bed",
+   "person",
+   "potted plant",
+   "vase"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 527220,
+  "file_name": "COCO_val2014_000000527220.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000527220.jpg",
+  "objects": [
+   "car",
+   "motorcycle"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 529939,
+  "file_name": "COCO_val2014_000000529939.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000529939.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 530466,
+  "file_name": "COCO_val2014_000000530466.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000530466.jpg",
+  "objects": [
+   "chair",
+   "train",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 530624,
+  "file_name": "COCO_val2014_000000530624.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000530624.jpg",
+  "objects": [
+   "bed",
+   "dog"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 531135,
+  "file_name": "COCO_val2014_000000531135.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000531135.jpg",
+  "objects": [
+   "baseball bat",
+   "baseball glove",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 531707,
+  "file_name": "COCO_val2014_000000531707.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000531707.jpg",
+  "objects": [
+   "bench",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 535608,
+  "file_name": "COCO_val2014_000000535608.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000535608.jpg",
+  "objects": [
+   "chair",
+   "handbag",
+   "person",
+   "umbrella"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 538067,
+  "file_name": "COCO_val2014_000000538067.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000538067.jpg",
+  "objects": [
+   "kite",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 538364,
+  "file_name": "COCO_val2014_000000538364.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000538364.jpg",
+  "objects": [
+   "bench",
+   "car",
+   "handbag",
+   "motorcycle",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 546717,
+  "file_name": "COCO_val2014_000000546717.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000546717.jpg",
+  "objects": [
+   "couch",
+   "cup",
+   "laptop",
+   "mouse",
+   "person",
+   "potted plant"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 547336,
+  "file_name": "COCO_val2014_000000547336.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000547336.jpg",
+  "objects": [
+   "book",
+   "cell phone",
+   "cup",
+   "fire hydrant",
+   "handbag",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 549738,
+  "file_name": "COCO_val2014_000000549738.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000549738.jpg",
+  "objects": [
+   "car",
+   "kite",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 550691,
+  "file_name": "COCO_val2014_000000550691.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000550691.jpg",
+  "objects": [
+   "bus",
+   "car",
+   "person",
+   "tie"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 553339,
+  "file_name": "COCO_val2014_000000553339.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000553339.jpg",
+  "objects": [
+   "car",
+   "traffic light"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 554266,
+  "file_name": "COCO_val2014_000000554266.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000554266.jpg",
+  "objects": [
+   "bed",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 555597,
+  "file_name": "COCO_val2014_000000555597.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000555597.jpg",
+  "objects": [
+   "car",
+   "parking meter",
+   "person",
+   "truck"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 556158,
+  "file_name": "COCO_val2014_000000556158.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000556158.jpg",
+  "objects": [
+   "person",
+   "skis"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 559956,
+  "file_name": "COCO_val2014_000000559956.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000559956.jpg",
+  "objects": [
+   "bottle",
+   "handbag",
+   "person",
+   "sheep"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 561223,
+  "file_name": "COCO_val2014_000000561223.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000561223.jpg",
+  "objects": [
+   "person",
+   "surfboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 561256,
+  "file_name": "COCO_val2014_000000561256.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000561256.jpg",
+  "objects": [
+   "person",
+   "sink"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 561958,
+  "file_name": "COCO_val2014_000000561958.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000561958.jpg",
+  "objects": [
+   "person",
+   "skis",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 562581,
+  "file_name": "COCO_val2014_000000562581.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000562581.jpg",
+  "objects": [
+   "person",
+   "sports ball",
+   "tennis racket"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 562818,
+  "file_name": "COCO_val2014_000000562818.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000562818.jpg",
+  "objects": [
+   "backpack",
+   "person",
+   "skis",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 563349,
+  "file_name": "COCO_val2014_000000563349.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000563349.jpg",
+  "objects": [
+   "person",
+   "snowboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 569273,
+  "file_name": "COCO_val2014_000000569273.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000569273.jpg",
+  "objects": [
+   "fire hydrant",
+   "person"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 579902,
+  "file_name": "COCO_val2014_000000579902.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000579902.jpg",
+  "objects": [
+   "car",
+   "motorcycle",
+   "person",
+   "skateboard"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 579970,
+  "file_name": "COCO_val2014_000000579970.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000579970.jpg",
+  "objects": [
+   "book",
+   "chair",
+   "couch",
+   "potted plant",
+   "tv"
+  ],
+  "coco_split": "val2014"
+ },
+ {
+  "image_id": 581100,
+  "file_name": "COCO_val2014_000000581100.jpg",
+  "path": "new_data/coco_val2014/COCO_val2014_000000581100.jpg",
+  "objects": [
+   "cow",
+   "giraffe"
+  ],
+  "coco_split": "val2014"
+ }
+]

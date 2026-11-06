@@ -1,0 +1,11 @@
+# Version overrides for uv (setup.sh: uv pip install --override chair_coco/overrides.txt). These are the versions the
+# port actually ran with on the sathwik box, where the packages work together although their metadata says otherwise:
+# vllm 0.17.1 declares transformers<5, numba 0.61.2 (a vllm dependency) declares numpy<2.3.
+transformers==5.5.0
+numpy==2.3.5
+# ultralytics depends on opencv-python (GUI build, needs system libGL); the box has only the headless build, which
+# provides the same cv2 module. The never-true marker removes opencv-python from the resolution.
+opencv-python ; sys_platform == "never"
+# ultralytics also declares polars and ultralytics-platform; the box ran it without them (installed with --no-deps).
+polars ; sys_platform == "never"
+ultralytics-platform ; sys_platform == "never"

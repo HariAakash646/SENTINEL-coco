@@ -1,3 +1,7 @@
+> **This copy adds `chair_coco/`:** SENTINEL on COCO captioning for any Hugging Face VLM, with a one-command pipeline
+> (`bash run_pipeline.sh <llm> <seed>`: preference data, C-DPO training, CHAIR + gpt-5.1 eval). See
+> [chair_coco/README.md](chair_coco/README.md#quick-start-the-whole-pipeline-on-any-machine).
+
 <div align="center">
 
 # Mitigating Object Hallucinations via <br> Sentence-Level Early Intervention <!-- omit in toc -->
