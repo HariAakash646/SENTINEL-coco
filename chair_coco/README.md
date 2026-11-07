@@ -62,6 +62,25 @@ bash run_pipeline.sh qwen2_5_vl_3b 42 judge      # a single stage; every stage r
   real cost. `python chair_coco/judge_batch.py --workdir <eval dir>/judge_batch --status` (or `--cancel`) shows (or
   cancels) the batches.
 
+## TRAINER=llamafactory: the authors' own training framework
+
+`TRAINER=llamafactory` trains with the framework the SENTINEL authors used instead of `train_cdpo.py`: LLaMA-Factory at
+commit `a8caf09` (2025-04-10; outside their marked additions, their three patched files `converter.py`, `parser.py`,
+`processor/pairwise.py` are identical to that commit and to no other), their patched files copied in, and the arguments
+of their `llamafactory/examples/SENTINEL/Qwen_2_5_VL/qwen_2_5_vl_7B_dpo.sh` (DPO sigmoid, beta 0.1, LoRA r128 on all
+LM linear layers, lr 3e-6 cosine, 1 epoch, bf16, DeepSpeed ZeRO-2, cutoff 4096). It runs in its own venv
+(`work/llamafactory/venv`, `lf/requirements.lock.txt`: transformers 4.51.1, peft 0.15.1, trl 0.9.6, DeepSpeed 0.15.4;
+torch 2.7.1 + CUDA 12.8 so Blackwell GPUs work), built by `setup` when `TRAINER=llamafactory` is set.
+
+- What follows the authors exactly also includes their masking: on Qwen, a target sentence ending in ".\n" makes it
+  train on the context instead (39% of their released Qwen pairs). `TRAINER=native` masks exactly the context.
+- Differences from their script: our model and pairs; gradient accumulation = `BATCH` / GPUs; `--seed`; processes
+  started by `torchrun` instead of the `deepspeed` launcher (same ZeRO-2 config); `--report_to none`. Their
+  `--flash_attn fa2` is kept; without the flash-attn package LLaMA-Factory falls back to PyTorch SDPA (same attention).
+- The adapter is converted to the eval's transformers naming (`lf/convert_adapter.py`: transformers >= 4.52 renamed
+  `model.layers` to `model.language_model.layers`), refusing unless every tensor maps one to one with equal shape.
+- Not FLOP-counted. Run names get `_lf` (`cdpo_2000_bs16_lf`): pass the same `TRAINER` to train, captions and judge.
+
 ## Data: the probe project's v2 splits
 
 The paper evaluates every method on the v2 splits of the probe repo (`new_data/coco_v2/`, copied to `data/coco_v2/`):

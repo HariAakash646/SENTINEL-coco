@@ -47,6 +47,11 @@
 #   BASE_ROLLOUTS, BASE_JUDGED   an existing base arm for the eval, e.g. the paper's (eval_probe.sh)
 #   COCO_TRAIN2014_DIR, COCO_VAL2014_DIR, COCO_ANN_DIR   existing COCO image / annotation folders instead of downloading
 #   HF_TOKEN            Hugging Face token, for gated models (Gemma 3)
+#   TRAINER [native]    native = chair_coco/train_cdpo.py (the authors' recipe reimplemented, with exact context masking);
+#                       llamafactory = the authors' own framework: LLaMA-Factory a8caf09 with their three patched files
+#                       (llamafactory/src/...) and their qwen_2_5_vl_7B_dpo.sh arguments, in its own venv
+#                       (chair_coco/lf/). Run setup with TRAINER=llamafactory once to build it. Adds _lf to the run's
+#                       name (cdpo_2000_bs16_lf), so pass the same TRAINER to train, captions and judge.
 # The gpt-5.1 judge reads OPENAI_API_KEY from the environment, or OPENAI_API_KEY=... from ./.env (git-ignored).
 set -euo pipefail
 
@@ -66,6 +71,11 @@ declare -A LLM_MAX_PIXELS=(
 # Hugging Face revisions to pin (the ones the original runs used); a name not listed downloads the current version.
 declare -A LLM_REVISION=(
   [qwen2_5_vl_3b]="66285546d2b821cf421d4f5eb2576359d3770cd3"
+)
+# LLaMA-Factory chat template per model, for TRAINER=llamafactory (the authors' scripts: qwen2_vl for Qwen2-VL and
+# Qwen2.5-VL). A model without an entry can only use the default trainer.
+declare -A LLM_LF_TEMPLATE=(
+  [qwen2_5_vl_3b]="qwen2_vl"
 )
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -91,6 +101,10 @@ PAIRS=${PAIRS:-7000}; N_IMAGES=${N_IMAGES:-8000}
 WORK=$(realpath -m "${WORK:-$REPO/work}")
 RUN=$WORK/runs/${LLM}_seed$SEED
 PY=$WORK/venv/bin/python
+# TRAINER=llamafactory: LLaMA-Factory at the commit the authors' patched files come from, in its own venv
+LF_COMMIT=a8caf09c7fb61d227004450a9c9c2500f2b17a88
+LF_SRC=$WORK/llamafactory/LLaMA-Factory-$LF_COMMIT
+LF_VENV=$WORK/llamafactory/venv
 PROFILE=$CC/flop_profiles/$MODEL_NAME.json
 BATCH=${BATCH:-64}; EPOCHS=${EPOCHS:-1}
 [[ $BATCH =~ ^[0-9]+$ ]] && (( BATCH >= 1 )) || { echo "BATCH must be a positive integer" >&2; exit 2; }
@@ -98,6 +112,12 @@ BATCH=${BATCH:-64}; EPOCHS=${EPOCHS:-1}
 OUT=cdpo_$PAIRS
 (( BATCH != 64 )) && OUT+=_bs$BATCH
 [[ $EPOCHS != 1 && $EPOCHS != 1.0 ]] && OUT+=_ep$EPOCHS
+TRAINER=${TRAINER:-native}
+case $TRAINER in
+  native) ;;
+  llamafactory) OUT+=_lf ;;
+  *) echo "TRAINER must be native or llamafactory (got '$TRAINER')" >&2; exit 2 ;;
+esac
 (( N_IMAGES <= 16000 )) || { echo "N_IMAGES is at most 16000 (chair_coco/data/train2014_images.tsv)" >&2; exit 2; }
 (( PAIRS >= BATCH )) || { echo "PAIRS must be at least BATCH ($BATCH), one training batch" >&2; exit 2; }
 
@@ -204,6 +224,7 @@ for r in rows:
 json.dump(rows, open(f"{work}/data/rl_test.json", "w"))
 PYEOF
 
+  [[ $TRAINER == llamafactory ]] && setup_llamafactory
   log "[setup] checks"
   "$PY" - "$MODEL" <<'PYEOF'
 import os, sys
@@ -217,6 +238,35 @@ for repo in ([] if os.path.isdir(model) else [model]) + ["IDEA-Research/groundin
     assert isinstance(try_to_load_from_cache(repo, "config.json"), str), f"{repo} does not resolve offline"
 print(f"  ok: torch {torch.__version__} (CUDA available: {torch.cuda.is_available()}), transformers {transformers.__version__}, "
       f"vllm {vllm.__version__}; models resolve offline")
+PYEOF
+}
+
+setup_llamafactory() {
+  log "[setup] TRAINER=llamafactory: LLaMA-Factory $LF_COMMIT + the authors' patched files -> $LF_SRC"
+  if [[ ! -f $LF_SRC/src/train.py ]]; then
+    mkdir -p "$WORK/llamafactory"
+    curl -sfL --retry 5 -o "$WORK/llamafactory/src.tar.gz" "https://github.com/hiyouga/LLaMA-Factory/archive/$LF_COMMIT.tar.gz"
+    tar xzf "$WORK/llamafactory/src.tar.gz" -C "$WORK/llamafactory"
+    rm -f "$WORK/llamafactory/src.tar.gz"
+  fi
+  local f
+  for f in converter.py parser.py processor/pairwise.py; do   # the three files the authors changed (README: llamafactory/)
+    cp "$REPO/llamafactory/src/llamafactory/data/$f" "$LF_SRC/src/llamafactory/data/$f"
+  done
+  log "[setup] LLaMA-Factory venv -> $LF_VENV (chair_coco/lf/requirements.lock.txt, DeepSpeed 0.15.4)"
+  [[ -x $LF_VENV/bin/python ]] || uv venv --python 3.11 "$LF_VENV"
+  uv pip sync --python "$LF_VENV/bin/python" --torch-backend cu128 "$CC/lf/requirements.lock.txt"
+  uv pip install --python "$LF_VENV/bin/python" --no-deps -e "$LF_SRC"
+  DS_BUILD_OPS=0 uv pip install --python "$LF_VENV/bin/python" --no-deps --no-build-isolation deepspeed==0.15.4
+  "$LF_VENV/bin/python" - <<'PYEOF'
+import inspect
+import deepspeed, peft, torch, transformers, trl
+from llamafactory.data.processor import pairwise
+from llamafactory.extras.misc import check_dependencies
+check_dependencies()
+assert "mark_context" in inspect.getsource(pairwise), "the authors' pairwise.py is not the one installed"
+print(f"  ok: LLaMA-Factory with the authors' C-DPO patch; torch {torch.__version__}, transformers {transformers.__version__}, "
+      f"peft {peft.__version__}, trl {trl.__version__}, deepspeed {deepspeed.__version__}")
 PYEOF
 }
 
@@ -278,6 +328,8 @@ stage_pairs() {
 stage_train() {
   if [[ -f $RUN/train/$OUT/checkpoint-final/adapter_model.safetensors ]]; then log "[train] $RUN/train/$OUT exists"; return; fi
   (( BATCH % NGPU == 0 )) || die "the batch of $BATCH pairs must split evenly over $NGPU GPUs (GPUS=$GPUS)"
+  [[ -f $RUN/data/train_pairs_$PAIRS.jsonl ]] || die "no $RUN/data/train_pairs_$PAIRS.jsonl: run generate and pairs first"
+  if [[ $TRAINER == llamafactory ]]; then train_llamafactory; return; fi
   common_args
   local launch=("$WORK/venv/bin/accelerate" launch --num_processes "$NGPU" --mixed_precision no)
   (( NGPU > 1 )) && launch+=(--multi_gpu)
@@ -286,6 +338,64 @@ stage_train() {
     --train-file "train_pairs_$PAIRS.jsonl" --out-name "$OUT" \
     --total-batch-size "$BATCH" --epochs "$EPOCHS" 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
   [[ -f $RUN/train/$OUT/checkpoint-final/adapter_model.safetensors ]] || die "training failed: see $RUN/logs/train_$OUT.log"
+}
+
+# The authors' training: llamafactory/examples/SENTINEL/Qwen_2_5_VL/qwen_2_5_vl_7B_dpo.sh, argument for argument.
+# Differences: the model and the dataset (ours); gradient accumulation = BATCH / GPUs (theirs: 16 x 4 GPUs = 64);
+# lr and epochs from the config / EPOCHS; --seed SEED (their script leaves LLaMA-Factory's default, 42); processes are
+# started by torchrun instead of the deepspeed launcher (same DeepSpeed ZeRO-2 config; torchrun honours
+# CUDA_VISIBLE_DEVICES as Slurm sets it); --report_to none. --flash_attn fa2 as in their script: LLaMA-Factory falls back
+# to PyTorch SDPA, with a warning, when flash-attn is not installed (the same attention, computed by another kernel).
+train_llamafactory() {
+  local tmpl=${LLM_LF_TEMPLATE[$LLM]:-}
+  [[ -n $tmpl ]] || die "TRAINER=llamafactory has no LLaMA-Factory template for $LLM (LLM_LF_TEMPLATE)"
+  [[ -x $LF_VENV/bin/python && -f $LF_SRC/src/train.py ]] || die "no LLaMA-Factory venv: run setup with TRAINER=llamafactory first"
+  local T=$RUN/train/$OUT lr port
+  lr=$("$PY" -c "import yaml; print(yaml.safe_load(open('$CONFIG'))['train']['lr'])")
+  port=$("$PY" -c "import socket; s = socket.socket(); s.bind(('', 0)); print(s.getsockname()[1])")
+  "$PY" "$CC/lf/convert_pairs.py" --pairs "$RUN/data/train_pairs_$PAIRS.jsonl" --out-dir "$T/lf_data" --name sentinel
+  log "[train] LLaMA-Factory C-DPO (the authors' framework) on $NGPU GPU(s), $PAIRS pairs, batch $BATCH ="
+  log "        $NGPU x 1 x $((BATCH / NGPU)), $EPOCHS epoch(s), lr $lr -> $T/lf_output"
+  ( cd "$LF_SRC" && CUDA_VISIBLE_DEVICES=$GPUS "$LF_VENV/bin/torchrun" --nproc_per_node "$NGPU" --master_port "$port" \
+      src/train.py \
+      --deepspeed "$CC/lf/ds_z2_config.json" \
+      --model_name_or_path "$MODEL" \
+      --stage dpo \
+      --flash_attn fa2 \
+      --do_train \
+      --finetuning_type lora \
+      --lora_rank 128 \
+      --lora_target all \
+      --pref_beta 0.1 \
+      --pref_loss sigmoid \
+      --dataset sentinel \
+      --dataset_dir "$T/lf_data" \
+      --template "$tmpl" \
+      --output_dir "$T/lf_output" \
+      --overwrite_cache \
+      --per_device_train_batch_size 1 \
+      --gradient_accumulation_steps $((BATCH / NGPU)) \
+      --lr_scheduler_type cosine \
+      --logging_steps 1 \
+      --save_steps 1000 \
+      --learning_rate "$lr" \
+      --num_train_epochs "$EPOCHS" \
+      --plot_loss \
+      --bf16 \
+      --warmup_ratio 0 \
+      --ddp_timeout 180000000 \
+      --cutoff_len 4096 \
+      --max_samples 1000000 \
+      --overwrite_output_dir \
+      --preprocessing_num_workers 16 \
+      --seed "$SEED" \
+      --report_to none ) 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
+  [[ -f $T/lf_output/adapter_model.safetensors ]] || die "LLaMA-Factory training failed: see $RUN/logs/train_$OUT.log"
+  log "[train] adapter -> the eval's transformers naming, every tensor checked -> $T/checkpoint-final"
+  CUDA_VISIBLE_DEVICES= "$PY" "$CC/lf/convert_adapter.py" --base-model "$MODEL" --adapter "$T/lf_output" \
+    --out "$T/checkpoint-final" 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
+  [[ -f $T/checkpoint-final/adapter_model.safetensors ]] || die "adapter conversion failed: see $RUN/logs/train_$OUT.log"
+  log "[train] note: LLaMA-Factory training is not FLOP-counted (generation's count is in $RUN/flops/)"
 }
 
 eval_probe() {   # eval_probe <steps> [env ...]: the paper's eval (chair_coco/eval_probe.sh) on this run's adapter
