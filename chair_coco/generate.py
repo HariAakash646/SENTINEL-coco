@@ -184,16 +184,21 @@ class VLLMGenerator:
         self.flops, self.profile = flops, profile
         self.image_token = image_token_id(AutoConfig.from_pretrained(model))
         self._prompt_cache = {}
-        eos = {tok.eos_token_id}
+        eos, suppress = {tok.eos_token_id}, []
         try:
-            g = GenerationConfig.from_pretrained(model).eos_token_id
+            gc = GenerationConfig.from_pretrained(model)
+            g = gc.eos_token_id
             eos |= set(g if isinstance(g, list) else [g])
+            suppress = list(getattr(gc, "suppress_tokens", None) or [])
         except OSError:
             pass
+        # Tokens the model's generation_config suppresses (HF generate never emits them; vLLM ignores the field with
+        # generation_config="vllm"): Gemma 4 12B lists two. None for Qwen2.5-VL, LLaVA and Gemma 3, so no change there.
+        self.logit_bias = {int(i): -100.0 for i in suppress} or None
         self.eos_ids = sorted(i for i in eos if i is not None)
         self.stop_ids = sorted(set().union(*(stop_token_ids(tok, w) for w in STOP_STRINGS))) + self.eos_ids
         logger.info(f"generator {model}: eos {self.eos_ids}, sentence stops "
-                    f"{[(i, tok.decode([i])) for i in self.stop_ids]}")
+                    f"{[(i, tok.decode([i])) for i in self.stop_ids]}, suppressed {sorted(self.logit_bias or [])}")
         self.llm = LLM(model=model, limit_mm_per_prompt={"image": 1}, gpu_memory_utilization=gpu_util,
                        max_model_len=max_model_len, max_num_seqs=max_num_seqs, dtype="bfloat16", seed=seed,
                        enforce_eager=enforce_eager, generation_config="vllm")
@@ -220,7 +225,7 @@ class VLLMGenerator:
         params = SamplingParams(n=n if do_sample else 1, temperature=temp if do_sample else 0.0, top_p=1.0,
                                 top_k=-1, repetition_penalty=1.0, max_tokens=max_tokens,
                                 stop_token_ids=self.stop_ids if single_sentence else self.eos_ids,
-                                include_stop_str_in_output=True)
+                                include_stop_str_in_output=True, logit_bias=self.logit_bias)
         reqs = [{"prompt": p, "multi_modal_data": {"image": im}} for p, im in zip(prompts, images)]
         outs = self.llm.generate(reqs, params, use_tqdm=False)
         if self.flops is not None:

@@ -1,0 +1,47 @@
+# SENTINEL (ICCV 2025) on COCO captioning, evaluated with probe's CHAIR protocol. Values follow the release
+# (main.py / utils/setup_utils.py defaults, run/generate_dataset.py, utils/get_llama_factory_data_pair.py,
+# llamafactory/examples/SENTINEL/Qwen_2_5_VL/qwen_2_5_vl_7B_dpo.sh); README.md lists the source of each value.
+
+# Machine-specific paths (run dir, HF cache, tools, FLOP profile) are not set here: run_pipeline.sh passes them.
+# --- shared by every stage
+model: Qwen/Qwen2.5-VL-7B-Instruct
+max_pixels: 1003520            # repo-wide standard (probe rollout_vllm.py / eval_greedy.yaml)
+seed: 42
+
+# --- prepare_data.py: how data/train2014_images.tsv was made on the original machine (paths are that machine's).
+#     run_pipeline.sh does not run it; it downloads the listed images instead. Excludes every v2 split image.
+data:
+  instances: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/annotations/instances_train2014.json
+  image_dir: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/images/train2014
+  val_image_dir: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/images/val2014   # v2 test images, byte check
+  n_images: 16000              # candidate list; generation stops at max_pairs (the release used 7814 images)
+  min_objects: 2               # probe src/prepare/prepare_coco.py
+  question: Describe this image in detail.   # the eval prompt (one of the release's four)
+
+# --- generate.py: run/generate_dataset.run_gen_dataset (n=10, T=0.7, DINO-base + YOLO11x are hard-coded there)
+generate:
+  batch_size: 16               # images in flight (release 5); throughput only, 2.4 vs 1.2 images/min on one L40S
+  dino_chunk: 5                # GroundingDINO forward <= 5 images, the release's batch (memory; batch 16 OOMs)
+  gpu_memory_utilization: 0.4  # release 0.7; at batch 16 the detectors need the rest of a single GPU
+  max_model_len: 8192          # release 20480; COCO images are ~400 visual tokens
+  max_num_seqs: 64
+
+# --- build_pairs.py
+build:
+  max_pairs: 7000              # release DATA_CNT_LIMIT; the Qwen2.5-VL-7B release set is 7k
+
+# --- train_cdpo.py (release: qwen_2_5_vl_7B_dpo.sh, this model's own recipe)
+train:
+  lr: 3.0e-6
+  beta: 0.1
+  epochs: 1
+  total_batch_size: 64
+  per_device_batch_size: 1
+  lora_r: 128
+  lora_alpha: 256              # LLaMA-Factory default: 2 x rank
+  lora_dropout: 0.0
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  cutoff_len: 4096
+  save_steps: 0                # release save_steps 1000 > total steps: final adapter only

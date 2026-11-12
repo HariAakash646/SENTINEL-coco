@@ -30,6 +30,9 @@
 #                       pairs: changing them costs only training and eval, not generation
 #   WORK [./work]       venv, model weights, COCO images and runs (~45 GB, plus ~0.2 GB per 1000 images)
 #   N_IMAGES [8000]     COCO train2014 images generation may use (at most 16000; raise it if 8000 give too few pairs)
+#   IMAGES_FROM [0]     generation skips the first N images of the list (e.g. ones another run already processed);
+#                       it then uses positions IMAGES_FROM .. N_IMAGES-1
+#   EXCLUDE_IMAGES      file of image ids, one per line, that generation must not use
 #   JUDGE_BUDGET [10]   most dollars the gpt-5.1 judge may spend per run (see chair_coco/judge_batch.py); a first eval
 #                       on the 1,000 test images judges the base, the model and the matched base, ~$3.5 (Batch API)
 #   JUDGE_MODE [batch]  batch = OpenAI Batch API, as in the paper: half price, but the eval waits for the batches
@@ -60,22 +63,36 @@ set -euo pipefail
 # also needs chair_coco/configs/<name>.yaml (copy the closest one: it holds the generation and training settings).
 declare -A LLM_PATH=(
   [qwen2_5_vl_3b]="Qwen/Qwen2.5-VL-3B-Instruct"
+  [qwen2_5_vl_7b]="Qwen/Qwen2.5-VL-7B-Instruct"   # the authors' Qwen2.5-VL model; their 7k pairs: chair_coco/import_release_pairs.py
   [llava_1_5_7b]="llava-hf/llava-1.5-7b-hf"
   [gemma3_4b]="google/gemma-3-4b-it"
+  [gemma4_12b]="google/gemma-4-12B-it"     # needs a GPU with >= 80 GB; runs in its own venvs (LLM_ENV below)
 )
 # Eval image cap passed to the processor (the probe pipeline's rollout.max_pixels): 1003520 for Qwen, 0 = the
 # processor's default, which fixed-resolution models (LLaVA) need.
 declare -A LLM_MAX_PIXELS=(
   [qwen2_5_vl_3b]=1003520
+  [qwen2_5_vl_7b]=1003520
 )
 # Hugging Face revisions to pin (the ones the original runs used); a name not listed downloads the current version.
 declare -A LLM_REVISION=(
   [qwen2_5_vl_3b]="66285546d2b821cf421d4f5eb2576359d3770cd3"
+  [qwen2_5_vl_7b]="cc594898137f460bfe9f0759e9844b3ce807cfb5"   # the snapshot of the probe paper's Qwen2.5-VL-7B runs
+  [gemma4_12b]="43c9d014b231474fa7212dbb48a762566c2b255d"   # the snapshot of the probe paper's Gemma-4-12B runs
 )
 # LLaMA-Factory chat template per model, for TRAINER=llamafactory (the authors' scripts: qwen2_vl for Qwen2-VL and
 # Qwen2.5-VL). A model without an entry can only use the default trainer.
+# Models whose architecture the main venv (transformers 5.5, vLLM 0.17.1) cannot load get their own pair of venvs,
+# chair_coco/envs/<name>/{gen,policy}.lock.txt: "gen" runs generation (vLLM + SENTINEL's tools), "policy" everything
+# else (training, test captions, eval). Gemma 4 12B (gemma4_unified) needs transformers >= 5.10: its policy venv is a
+# copy of the probe paper's Gemma-4-12B environment (transformers 5.20.2, torch 2.10 / CUDA 12.8), its gen venv vLLM 0.30.0
+# with the same transformers (torch 2.13 / CUDA 12.9: NVIDIA driver >= 575). The CUDA build is in <part>.torch-backend.
+declare -A LLM_ENV=(
+  [gemma4_12b]="gemma4"
+)
 declare -A LLM_LF_TEMPLATE=(
   [qwen2_5_vl_3b]="qwen2_vl"
+  [qwen2_5_vl_7b]="qwen2_vl"
 )
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -101,6 +118,13 @@ PAIRS=${PAIRS:-7000}; N_IMAGES=${N_IMAGES:-8000}
 WORK=$(realpath -m "${WORK:-$REPO/work}")
 RUN=$WORK/runs/${LLM}_seed$SEED
 PY=$WORK/venv/bin/python
+ENV_NAME=${LLM_ENV[$LLM]:-}
+if [[ -n $ENV_NAME ]]; then
+  PY=$WORK/envs/$ENV_NAME/policy/bin/python       # training, test captions, eval
+  GEN_PY=$WORK/envs/$ENV_NAME/gen/bin/python      # generation
+else
+  GEN_PY=$PY
+fi
 # TRAINER=llamafactory: LLaMA-Factory at the commit the authors' patched files come from, in its own venv
 LF_COMMIT=a8caf09c7fb61d227004450a9c9c2500f2b17a88
 LF_SRC=$WORK/llamafactory/LLaMA-Factory-$LF_COMMIT
@@ -127,6 +151,11 @@ ANN=${COCO_ANN_DIR:-$WORK/coco/annotations}
 export XDG_CACHE_HOME=$WORK/cache PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # uv's package cache and its Python live in WORK too (not ~/.cache, ~/.local), so a small home directory is enough
 export UV_CACHE_DIR=${UV_CACHE_DIR:-$WORK/uv/cache} UV_PYTHON_INSTALL_DIR=${UV_PYTHON_INSTALL_DIR:-$WORK/uv/python}
+# large wheels (torch, CUDA libraries) over a slow or stalling cluster network: uv's default 30 s read timeout is too short
+export UV_HTTP_TIMEOUT=${UV_HTTP_TIMEOUT:-600}
+# generation initializes CUDA before vLLM starts its engine process, and a forked process cannot reuse it
+# ("Cannot re-initialize CUDA in forked subprocess", seen on two clusters): start vLLM's workers with spawn
+export VLLM_WORKER_MULTIPROC_METHOD=${VLLM_WORKER_MULTIPROC_METHOD:-spawn}
 mkdir -p "$RUN/logs" "$RUN/data" "$WORK/data"
 exec > >(tee -a "$RUN/logs/pipeline.log") 2>&1
 log() { echo "[$(date '+%F %T')] $*"; }
@@ -160,15 +189,25 @@ fetch_images() {   # fetch_images <tsv: image_id file md5> <n> <dest> <url prefi
 }
 
 stage_setup() {
-  log "[setup] python environment -> $WORK/venv (exact versions: chair_coco/requirements.lock.txt)"
+  [[ -n $ENV_NAME ]] || log "[setup] python environment -> $WORK/venv (exact versions: chair_coco/requirements.lock.txt)"
   # uv's installer puts it in ~/.local/bin (older versions: ~/.cargo/bin), which non-interactive shells and batch
   # jobs often do not have on PATH
   command -v uv > /dev/null || export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
   command -v uv > /dev/null || die "uv is needed: curl -LsSf https://astral.sh/uv/install.sh | sh  (then re-run)"
   log "  uv $(uv --version | cut -d' ' -f2) at $(command -v uv)"
   command -v nvidia-smi > /dev/null || log "WARNING: nvidia-smi not found; generation, training and eval need NVIDIA GPUs"
-  [[ -x $PY ]] || uv venv --python 3.12 "$WORK/venv"
-  uv pip sync --python "$PY" --torch-backend cu128 "$CC/requirements.lock.txt"
+  if [[ -n $ENV_NAME ]]; then
+    local part
+    for part in gen policy; do
+      log "[setup] $LLM venv '$part' -> $WORK/envs/$ENV_NAME/$part (chair_coco/envs/$ENV_NAME/$part.lock.txt)"
+      [[ -x $WORK/envs/$ENV_NAME/$part/bin/python ]] || uv venv --python 3.12 "$WORK/envs/$ENV_NAME/$part"
+      uv pip sync --python "$WORK/envs/$ENV_NAME/$part/bin/python" \
+        --torch-backend "$(cat "$CC/envs/$ENV_NAME/$part.torch-backend" 2> /dev/null || echo cu128)" "$CC/envs/$ENV_NAME/$part.lock.txt"
+    done
+  else
+    [[ -x $PY ]] || uv venv --python 3.12 "$WORK/venv"
+    uv pip sync --python "$PY" --torch-backend cu128 "$CC/requirements.lock.txt"
+  fi
   HF_HUB_OFFLINE=0 "$PY" -c "import nltk; [nltk.download(p, download_dir='$NLTK_DATA', quiet=True) for p in ('punkt_tab', 'wordnet', 'averaged_perceptron_tagger_eng')]"
 
   log "[setup] model weights -> $HF_HUB_CACHE"
@@ -226,7 +265,7 @@ PYEOF
 
   [[ $TRAINER == llamafactory ]] && setup_llamafactory
   log "[setup] checks"
-  "$PY" - "$MODEL" <<'PYEOF'
+  "$GEN_PY" - "$MODEL" <<'PYEOF'
 import os, sys
 import fastcoref, nltk, spacy, supervision, torch, transformers, ultralytics, vllm
 from huggingface_hub import try_to_load_from_cache
@@ -239,6 +278,16 @@ for repo in ([] if os.path.isdir(model) else [model]) + ["IDEA-Research/groundin
 print(f"  ok: torch {torch.__version__} (CUDA available: {torch.cuda.is_available()}), transformers {transformers.__version__}, "
       f"vllm {vllm.__version__}; models resolve offline")
 PYEOF
+  if [[ -n $ENV_NAME ]]; then   # the policy venv: training and eval packages, and the model's config and processor
+    "$PY" - "$MODEL" <<'PYEOF'
+import sys
+import accelerate, nltk, openai, peft, torch, transformers
+from transformers import AutoConfig, AutoProcessor
+AutoConfig.from_pretrained(sys.argv[1]); AutoProcessor.from_pretrained(sys.argv[1])
+print(f"  ok (policy venv): torch {torch.__version__}, transformers {transformers.__version__}, peft {peft.__version__}, "
+      f"accelerate {accelerate.__version__}; {sys.argv[1]} config and processor load offline")
+PYEOF
+  fi
 }
 
 setup_llamafactory() {
@@ -246,7 +295,8 @@ setup_llamafactory() {
   if [[ ! -f $LF_SRC/src/train.py ]]; then
     mkdir -p "$WORK/llamafactory"
     curl -sfL --retry 5 -o "$WORK/llamafactory/src.tar.gz" "https://github.com/hiyouga/LLaMA-Factory/archive/$LF_COMMIT.tar.gz"
-    tar xzf "$WORK/llamafactory/src.tar.gz" -C "$WORK/llamafactory"
+    mkdir -p "$LF_SRC"   # the archive's top folder follows the repo's current name (LlamaFactory-<sha>); strip it
+    tar xzf "$WORK/llamafactory/src.tar.gz" -C "$LF_SRC" --strip-components=1
     rm -f "$WORK/llamafactory/src.tar.gz"
   fi
   local f
@@ -257,16 +307,30 @@ setup_llamafactory() {
   [[ -x $LF_VENV/bin/python ]] || uv venv --python 3.11 "$LF_VENV"
   uv pip sync --python "$LF_VENV/bin/python" --torch-backend cu128 "$CC/lf/requirements.lock.txt"
   uv pip install --python "$LF_VENV/bin/python" --no-deps -e "$LF_SRC"
-  DS_BUILD_OPS=0 uv pip install --python "$LF_VENV/bin/python" --no-deps --no-build-isolation deepspeed==0.15.4
-  "$LF_VENV/bin/python" - <<'PYEOF'
-import inspect
-import deepspeed, peft, torch, transformers, trl
+  # DeepSpeed's build imports deepspeed, which imports Triton when present, and Triton >= 3 raises without a GPU driver
+  # (a CPU-only setup job). Hide Triton from the build only: it compiles no ops (DS_BUILD_OPS=0), so the package is the
+  # same; at training time, on a GPU, Triton loads as usual.
+  local no_triton=$WORK/llamafactory/build_without_triton
+  mkdir -p "$no_triton/triton"
+  echo 'raise ImportError("Triton hidden while building DeepSpeed (run_pipeline.sh setup)")' > "$no_triton/triton/__init__.py"
+  DS_BUILD_OPS=0 PYTHONPATH=$no_triton uv pip install --python "$LF_VENV/bin/python" --no-deps --no-build-isolation deepspeed==0.15.4
+  # On a CPU-only node, importing LLaMA-Factory imports DeepSpeed (via transformers), which imports Triton, which needs a
+  # GPU driver: check with Triton hidden there (training runs on a GPU, where it loads normally)
+  local check_path=
+  "$LF_VENV/bin/python" -c "import torch, sys; sys.exit(0 if torch.cuda.is_available() else 1)" 2> /dev/null \
+    || check_path=$no_triton
+  PYTHONPATH=$check_path "$LF_VENV/bin/python" - <<'PYEOF'
+import importlib.metadata, inspect
+import peft, torch, transformers, trl
 from llamafactory.data.processor import pairwise
 from llamafactory.extras.misc import check_dependencies
+import llamafactory.train.tuner  # the whole training stack (trainers, datasets, multimodal plugins)
 check_dependencies()
 assert "mark_context" in inspect.getsource(pairwise), "the authors' pairwise.py is not the one installed"
+import deepspeed
+ds = f"deepspeed {deepspeed.__version__}" + ("" if torch.cuda.is_available() else " (checked without Triton: no GPU here)")
 print(f"  ok: LLaMA-Factory with the authors' C-DPO patch; torch {torch.__version__}, transformers {transformers.__version__}, "
-      f"peft {peft.__version__}, trl {trl.__version__}, deepspeed {deepspeed.__version__}")
+      f"peft {peft.__version__}, trl {trl.__version__}, {ds}")
 PYEOF
 }
 
@@ -286,7 +350,19 @@ pair_status() {   # "<pairs in the finished prefix> <finished prefix> <manifest 
 
 stage_generate() {
   [[ -f $PROFILE ]] || die "no FLOP profile; run the profile stage first"
-  head -n "$N_IMAGES" "$WORK/data/train2014_images.jsonl" > "$RUN/data/images.jsonl"
+  # the images this run may use: list positions IMAGES_FROM .. N_IMAGES-1, minus the ids in EXCLUDE_IMAGES
+  "$PY" - "$WORK/data/train2014_images.jsonl" "$RUN/data/images.jsonl" "$N_IMAGES" "${IMAGES_FROM:-0}" "${EXCLUDE_IMAGES:-}" <<'PYEOF'
+import json, sys
+src, dst, n, start, exclude = sys.argv[1], sys.argv[2], int(sys.argv[3]), int(sys.argv[4]), sys.argv[5]
+skip = {line.strip() for line in open(exclude) if line.strip()} if exclude else set()
+rows = [json.loads(line) for line in open(src)][start:n]
+keep = [r for r in rows if str(r["image_id"]) not in skip]
+with open(dst, "w") as f:
+    f.writelines(json.dumps(r) + "\n" for r in keep)
+if start or skip:
+    print(f"  images: list positions {start}..{n - 1}, {len(rows) - len(keep)} excluded by id -> {len(keep)} usable")
+PYEOF
+  [[ -s $RUN/data/images.jsonl ]] || die "no usable images (N_IMAGES=$N_IMAGES, IMAGES_FROM=${IMAGES_FROM:-0})"
   common_args
   local chunk kept prefix total last=-1
   while :; do
@@ -307,7 +383,7 @@ stage_generate() {
     log "[generate] round: up to $chunk images on each of $NGPU GPU(s)"
     local pids=() i
     for i in "${!GPU_LIST[@]}"; do
-      CUDA_VISIBLE_DEVICES=${GPU_LIST[$i]} "$PY" "$CC/generate.py" "${COMMON[@]}" --flop-profile "$PROFILE" --seed "$SEED" \
+      CUDA_VISIBLE_DEVICES=${GPU_LIST[$i]} "$GEN_PY" "$CC/generate.py" "${COMMON[@]}" --flop-profile "$PROFILE" --seed "$SEED" \
         --hf-cache "$HF_HUB_CACHE" --tools-dir "$WORK/tools" --shard "$i" --num-shards "$NGPU" --num-images "$chunk" \
         >> "$RUN/logs/generate_shard$i.log" 2>&1 &
       pids+=($!)
@@ -331,7 +407,7 @@ stage_train() {
   [[ -f $RUN/data/train_pairs_$PAIRS.jsonl ]] || die "no $RUN/data/train_pairs_$PAIRS.jsonl: run generate and pairs first"
   if [[ $TRAINER == llamafactory ]]; then train_llamafactory; return; fi
   common_args
-  local launch=("$WORK/venv/bin/accelerate" launch --num_processes "$NGPU" --mixed_precision no)
+  local launch=("$(dirname "$PY")/accelerate" launch --num_processes "$NGPU" --mixed_precision no)
   (( NGPU > 1 )) && launch+=(--multi_gpu)
   log "[train] C-DPO on $NGPU GPU(s), $PAIRS pairs, batch $BATCH, $EPOCHS epoch(s) -> $RUN/train/$OUT"
   CUDA_VISIBLE_DEVICES=$GPUS "${launch[@]}" "$CC/train_cdpo.py" "${COMMON[@]}" --flop-profile "$PROFILE" --seed "$SEED" \
@@ -353,6 +429,9 @@ train_llamafactory() {
   local T=$RUN/train/$OUT lr port
   lr=$("$PY" -c "import yaml; print(yaml.safe_load(open('$CONFIG'))['train']['lr'])")
   port=$("$PY" -c "import socket; s = socket.socket(); s.bind(('', 0)); print(s.getsockname()[1])")
+  if [[ -f $T/lf_output/adapter_model.safetensors && -f $T/lf_output/all_results.json ]]; then
+    log "[train] LLaMA-Factory training already finished ($T/lf_output); converting its adapter only"
+  else
   "$PY" "$CC/lf/convert_pairs.py" --pairs "$RUN/data/train_pairs_$PAIRS.jsonl" --out-dir "$T/lf_data" --name sentinel
   log "[train] LLaMA-Factory C-DPO (the authors' framework) on $NGPU GPU(s), $PAIRS pairs, batch $BATCH ="
   log "        $NGPU x 1 x $((BATCH / NGPU)), $EPOCHS epoch(s), lr $lr -> $T/lf_output"
@@ -391,6 +470,7 @@ train_llamafactory() {
       --seed "$SEED" \
       --report_to none ) 2>&1 | tee -a "$RUN/logs/train_$OUT.log"
   [[ -f $T/lf_output/adapter_model.safetensors ]] || die "LLaMA-Factory training failed: see $RUN/logs/train_$OUT.log"
+  fi
   log "[train] adapter -> the eval's transformers naming, every tensor checked -> $T/checkpoint-final"
   CUDA_VISIBLE_DEVICES= "$PY" "$CC/lf/convert_adapter.py" --base-model "$MODEL" --adapter "$T/lf_output" \
     --out "$T/checkpoint-final" 2>&1 | tee -a "$RUN/logs/train_$OUT.log"

@@ -43,3 +43,5 @@ py-cpuinfo
 tqdm
 setuptools==75.8.0
 wheel==0.45.1
+# pyarrow declares no numpy requirement, and pyarrow >= 22 needs numpy 2 (LLaMA-Factory then: numpy < 2): that period's
+pyarrow==19.0.1

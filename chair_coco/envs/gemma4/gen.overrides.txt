@@ -1,0 +1,5 @@
+# as ../../overrides.txt: ultralytics' GUI opencv, polars and ultralytics-platform are left out (the headless build provides cv2)
+opencv-python ; sys_platform == "never"
+polars ; sys_platform == "never"
+ultralytics-platform ; sys_platform == "never"
+transformers==5.20.2

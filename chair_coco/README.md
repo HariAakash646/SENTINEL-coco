@@ -62,6 +62,34 @@ bash run_pipeline.sh qwen2_5_vl_3b 42 judge      # a single stage; every stage r
   real cost. `python chair_coco/judge_batch.py --workdir <eval dir>/judge_batch --status` (or `--cancel`) shows (or
   cancels) the batches.
 
+## Gemma 4 12B (`gemma4_12b`)
+
+Set up the way the probe paper's Gemma-4-12B runs use the model (turing `~/probe-rl-hallucination` 3055e33,
+`store/runs/v2_gemma4_12b`): `google/gemma-4-12B-it` at revision `43c9d014` (that run's snapshot), the processor's own
+image resolution (`max_pixels: null` there, `0` here), greedy 512-token test captions with the same prompt and chat
+template, and transformers 5.20.2. Config: `configs/gemma4_12b.yaml` (the release's recipe for its largest model,
+LLaVA-1.6-13B: lr 3e-6, LoRA r128 on the 328 linear layers of `model.language_model`, batch 64, 1 epoch).
+
+- **Two venvs**, built by `setup` (`envs/gemma4/`): the main venv's transformers 5.5 and vLLM 0.17.1 cannot load this
+  architecture (`gemma4_unified`, transformers >= 5.10). `policy` is a copy of the paper's Gemma-4-12B environment
+  (torch 2.10, transformers 5.20.2, peft 0.18.1, accelerate 1.15.0; CUDA 12.8) and runs training, test captions and the
+  eval; `gen` runs generation with vLLM 0.30.0 and the same transformers (torch 2.13, **CUDA 12.9: NVIDIA driver >= 575**).
+- **Hardware:** one GPU with >= 80 GB (A100/H100 80 GB, H200); `gpu_memory_utilization` 0.45 assumes 80 GB.
+- Generation blocks the two tokens Gemma 4's `generation_config.json` suppresses (vLLM ignores that field); stops are
+  `<eos>`, `<turn|>` and token 50 from the same file, plus the sentence ends. Nothing changes for the other models.
+- `profile` loads the model in fp32 on CPU: ~50-100 GB of RAM for the first run (the profile is then reused).
+- `TRAINER=llamafactory` does not apply (the authors' LLaMA-Factory predates Gemma 4).
+- The paper's Gemma-4-12B base captions and gpt-5.1 judgments (turing `store/runs/v2_gemma4_12b/rollouts/rl_test_base`
+  and `judged/rl_test_base/gpt-5.1-high-f44096cee394`) can be copied to `work/base_eval/gemma-4-12B-it/rl_test_base` and
+  `.../judged_v3`, as for Qwen, so only the trained model is captioned and judged.
+
+```bash
+bash run_pipeline.sh gemma4_12b 42 setup profile                      # CPU: both venvs, weights, images, FLOP profile
+PAIRS=64 LIMIT=8 JUDGE_MODE=live bash run_pipeline.sh gemma4_12b 1    # smoke test first on the new GPU
+bash run_pipeline.sh gemma4_12b 42 generate pairs train captions      # GPU
+bash run_pipeline.sh gemma4_12b 42 judge                              # CPU
+```
+
 ## TRAINER=llamafactory: the authors' own training framework
 
 `TRAINER=llamafactory` trains with the framework the SENTINEL authors used instead of `train_cdpo.py`: LLaMA-Factory at

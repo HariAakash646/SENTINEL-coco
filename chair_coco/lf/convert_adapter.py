@@ -39,20 +39,31 @@ def main():
 
     with torch.device("meta"):
         model = AutoModelForImageTextToText.from_config(AutoConfig.from_pretrained(a.base_model))
+    names = [name for name, _ in model.named_modules()]
     by_tail = {}
-    for name, _ in model.named_modules():
+    for name in names:
         by_tail.setdefault(tail(name), []).append(name)
 
     def new_module(old):
-        hits = by_tail.get(tail(old), [])
+        """The eval model's module for a name in the adapter: a full transformers-4.51 name (model.layers.N...) is
+        matched by its layers.N... path; PEFT may also store target_modules as the shortest unique name endings
+        ("34.mlp.up_proj"), which stay endings of the same modules under the new names. Exactly one must match."""
+        hits = by_tail.get(tail(old), []) if TAIL.search(old) else []
+        if not hits:
+            hits = [n for n in names if n == old or n.endswith("." + old)]
         if len(hits) != 1:
             raise SystemExit(f"target module {old!r}: {len(hits)} modules of the eval model match it")
         return hits[0]
 
-    targets = cfg["target_modules"]
-    if isinstance(targets, str):
-        raise SystemExit("target_modules is a pattern, not a name list; nothing to rename (use the adapter as is)")
-    mapping = {t: new_module(t) for t in targets}
+    # The LoRA'd modules, from the tensor names (always full module names). target_modules in the config is not used:
+    # PEFT may have stored it as name endings, where one ending ("k_proj") covers many modules.
+    prefix = "base_model.model."
+    modules = sorted({k[len(prefix):].partition(".lora_")[0] for k in tensors if k.startswith(prefix)})
+    if len(modules) * 2 != len(tensors):
+        raise SystemExit(f"expected lora_A and lora_B for each module: {len(tensors)} tensors, {len(modules)} modules")
+    mapping = {m: new_module(m) for m in modules}
+    if len(set(mapping.values())) != len(mapping):
+        raise SystemExit("two adapter modules map to the same module of the eval model")
     keep = {k: cfg[k] for k in ("r", "lora_alpha", "lora_dropout", "bias", "use_rslora", "use_dora", "fan_in_fan_out")
             if k in cfg}
     peft_model = get_peft_model(model, LoraConfig(**keep, target_modules=sorted(mapping.values())))

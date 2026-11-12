@@ -276,8 +276,10 @@ psutil==7.2.2
     #   peft
 py-cpuinfo==9.0.0
     # via -r requirements.in
-pyarrow==26.0.1
-    # via datasets
+pyarrow==19.0.1
+    # via
+    #   -r requirements.in
+    #   datasets
 pycparser==3.12
     # via cffi
 pydantic==2.10.6

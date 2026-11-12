@@ -1,0 +1,53 @@
+# SENTINEL (ICCV 2025) on COCO captioning for Gemma 4 12B (google/gemma-4-12B-it), set up as the probe paper's
+# Gemma-4-12B runs use it (turing ~/probe-rl-hallucination 3055e33, store/runs/v2_gemma4_12b): the same checkpoint
+# revision, the processor's own image resolution (rollout max_pixels: null), greedy 512-token test captions, and
+# transformers 5.20.2. Generation (vLLM) and the policy stages run in their own venvs (envs/gemma4/, built by
+# run_pipeline.sh setup), since this architecture (gemma4_unified) needs transformers >= 5.10.
+# Hardware: one GPU with >= 80 GB (A100/H100 80 GB, H200). The bf16 weights are ~24 GB; vLLM takes
+# gpu_memory_utilization of the GPU and the detectors the rest; C-DPO keeps the policy, its reference pass (adapter
+# off), activations and the LoRA's AdamW state (~0.5 B parameters at rank 128) on the same GPU.
+
+# Machine-specific paths (run dir, HF cache, tools, FLOP profile) are not set here: run_pipeline.sh passes them.
+# --- shared by every stage
+model: google/gemma-4-12B-it
+max_pixels: 0                  # 0 = no resize: the Gemma 4 processor's own resolution, as the probe paper's runs
+seed: 42
+
+# --- prepare_data.py: how data/train2014_images.tsv was made (same list as every model; run_pipeline.sh downloads it)
+data:
+  instances: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/annotations/instances_train2014.json
+  image_dir: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/images/train2014
+  val_image_dir: /scratch/balaji/cbms_for_mllms/datasets/coco_2014/mscoco/images/val2014   # v2 test images, byte check
+  n_images: 16000
+  min_objects: 2
+  question: Describe this image in detail.   # the eval prompt (one of the release's four)
+
+# --- generate.py: run/generate_dataset.run_gen_dataset (n=10, T=0.7, DINO-base + YOLO11x are hard-coded there)
+generate:
+  batch_size: 16               # images in flight (release 5)
+  dino_chunk: 5                # GroundingDINO forward <= 5 images (the release's batch)
+  gpu_memory_utilization: 0.45 # of an 80 GB GPU: ~36 GB for the 24 GB weights + KV cache; the detectors use the rest
+  max_model_len: 8192          # captions <= 512 tokens per step; Gemma 4 images are <= 280 soft tokens here
+  max_num_seqs: 64
+
+# --- build_pairs.py
+build:
+  max_pairs: 7000              # release DATA_CNT_LIMIT
+
+# --- train_cdpo.py: the release's recipe for its largest model (LLaVA-1.6-13B, LLaVA_v1_6_vicuna_13b_lora_dpo.sh):
+#     lr 3e-6, LoRA r128 on every LM linear layer, global batch 64, 1 epoch. The LoRA pattern (vlm_common.LORA_TARGETS)
+#     selects the 328 linear layers of model.language_model; the vision and audio towers and lm_head stay frozen.
+train:
+  lr: 3.0e-6
+  beta: 0.1
+  epochs: 1
+  total_batch_size: 64
+  per_device_batch_size: 1
+  lora_r: 128
+  lora_alpha: 256              # LLaMA-Factory default: 2 x rank
+  lora_dropout: 0.0
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  cutoff_len: 4096
+  save_steps: 0                # final adapter only

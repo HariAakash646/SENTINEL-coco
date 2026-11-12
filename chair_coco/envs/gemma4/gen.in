@@ -1,0 +1,29 @@
+# Gemma 4 12B generation environment (generate.py: vLLM sampling + SENTINEL's tools). vLLM 0.30.0 is the first release
+# that requires transformers >= 5.10.4 (the Gemma 4 era) and it sets no upper bound, so it runs with transformers 5.20.2,
+# the version of the probe paper's Gemma-4-12B environment (policy.lock.txt). vLLM 0.31 and 0.32 cap transformers below
+# 5.18 / 5.20, and 0.33 needs torch 2.14, built only for CUDA 13. vLLM 0.30 needs torch 2.13, built for CUDA 12.9 (NVIDIA
+# driver >= 570 via CUDA minor-version compatibility): this venv is installed with --torch-backend cu129 (gen.torch-backend). The tools are pinned as in
+# ../../requirements.txt.
+# vLLM's PyPI wheel is built for CUDA 13 (needs NVIDIA driver >= 580); its CUDA 12.9 build comes from vLLM's own index
+# and runs on drivers >= 570 (CUDA minor-version compatibility), like the torch 2.13 cu129 build next to it.
+--extra-index-url https://wheels.vllm.ai/0.30.0/cu129
+vllm==0.30.0+cu129
+transformers==5.20.2
+tokenizers==0.23.3
+huggingface-hub
+safetensors
+numpy
+scipy
+pillow
+pyyaml
+tqdm
+spacy==3.8.18
+en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl
+fastcoref==2.1.6
+nltk==3.9.2
+ultralytics==8.4.195
+ultralytics-thop==2.2.3
+supervision==0.31.3
+pydeprecate==0.13.0
+opencv-python-headless==4.13.0.92
+matplotlib==3.10.7
